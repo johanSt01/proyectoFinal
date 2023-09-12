@@ -22,5 +22,5 @@ public class Usuario implements Serializable {
     private int codigo;
     private String cedula, nombre, telefono, urlFoto;
 
-
+    private Ciudad codigo_ciudad;
 }

@@ -1,9 +1,6 @@
 package co.edu.uniquindio.proyectoFinal.modelo;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
@@ -21,4 +18,7 @@ public class Atencion implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int codigo;
     private String diagnostico, tratamiento, notasMedicas;
+
+    @OneToOne
+    private Cita codigo_cita;
 }

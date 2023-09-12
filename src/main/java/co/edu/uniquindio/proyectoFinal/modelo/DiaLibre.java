@@ -1,9 +1,6 @@
 package co.edu.uniquindio.proyectoFinal.modelo;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
@@ -22,4 +19,7 @@ public class DiaLibre implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int codigo;
     private Date dia;
+
+    @ManyToOne
+    private Medico codigo_medico;
 }

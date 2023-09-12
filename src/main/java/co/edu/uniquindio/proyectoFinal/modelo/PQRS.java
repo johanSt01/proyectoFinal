@@ -1,12 +1,10 @@
 package co.edu.uniquindio.proyectoFinal.modelo;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
-
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Getter
@@ -22,4 +20,12 @@ public class PQRS implements Serializable {
     private int codigo;
     private Date fechaCreacion;
     private String tipo, motivo;
+
+    @OneToMany (mappedBy = "codigo_pqrs")
+    private List<Mensaje> mensaje;
+
+    private EstadoPQRS codigo_estado;
+
+    @ManyToOne
+    private Cita codigo_cita;
 }

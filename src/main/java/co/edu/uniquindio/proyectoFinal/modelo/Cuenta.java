@@ -1,12 +1,10 @@
 package co.edu.uniquindio.proyectoFinal.modelo;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Getter
@@ -20,6 +18,11 @@ public class Cuenta implements Serializable {
     @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int codigo;
+
     private String correo;
     private String contraseña;
+
+    @OneToMany (mappedBy = "codigo_cuenta")
+    private List<Mensaje> mensaje;
+
 }

@@ -1,9 +1,6 @@
 package co.edu.uniquindio.proyectoFinal.modelo;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
@@ -23,4 +20,13 @@ public class Mensaje implements Serializable {
     private int codigo;
     private Date fechaCreacion;
     private String mensaje;
+
+    @ManyToOne
+    private Cuenta codigo_cuenta;
+
+    @ManyToOne
+    private PQRS codigo_pqrs;
+
+    @OneToOne
+    private Mensaje codigo_mensaje;
 }

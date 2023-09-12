@@ -1,9 +1,6 @@
 package co.edu.uniquindio.proyectoFinal.modelo;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
@@ -25,4 +22,7 @@ public class Horario implements Serializable {
     private Date dia;
     private Time horaIncio;
     private Time horaFin;
+
+    @ManyToOne
+    private Medico codigo_medico;
 }

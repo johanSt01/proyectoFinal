@@ -1,13 +1,11 @@
 package co.edu.uniquindio.proyectoFinal.modelo;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Getter
@@ -23,4 +21,11 @@ public class Paciente extends Usuario implements Serializable  {
     private int codigo;
     private Date fecha;
     private String alergias;
+
+    @OneToMany(mappedBy = "cedula_paciente")
+    private List<Cita> cita;
+
+    private EPS codigo_eps;
+
+    private TipoSangre codigo_tipo_sangre;
 }

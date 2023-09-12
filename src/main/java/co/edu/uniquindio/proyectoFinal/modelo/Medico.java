@@ -1,12 +1,10 @@
 package co.edu.uniquindio.proyectoFinal.modelo;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Getter
@@ -21,4 +19,11 @@ public class Medico extends Usuario implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int codigo;
 
+    private Especialidad codigo_especialidad;
+
+    @OneToMany(mappedBy = "codigo_medico")
+    private List<Horario> horario;
+
+    @OneToMany(mappedBy = "codigo_medico")
+    private List<DiaLibre> diaLibre;
 }

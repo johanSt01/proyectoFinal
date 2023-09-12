@@ -1,14 +1,10 @@
 package co.edu.uniquindio.proyectoFinal.modelo;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
-
-import java.io.Serial;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Getter
@@ -26,4 +22,14 @@ public class Cita implements Serializable {
     private Date fechaCita;
     private String motivo;
 
+    @OneToMany(mappedBy = "codigo_cita")
+    private List<PQRS> pqrs;
+
+    @ManyToOne
+    private Paciente cedula_paciente;
+
+    private EstadoCita codigo_estado;
+
+    @OneToOne (mappedBy = "codigo_cita")
+    private Atencion atencion;
 }
