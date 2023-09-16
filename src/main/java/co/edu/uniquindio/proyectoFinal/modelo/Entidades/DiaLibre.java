@@ -1,11 +1,10 @@
-package co.edu.uniquindio.proyectoFinal.modelo;
+package co.edu.uniquindio.proyectoFinal.modelo.Entidades;
 
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 @Getter
@@ -13,19 +12,16 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Paciente extends Usuario implements Serializable  {
+public class DiaLibre implements Serializable {
 
     @Id
     @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int codigo;
-    private Date fecha;
-    private String alergias;
 
-    @OneToMany(mappedBy = "cedula_paciente")
-    private List<Cita> cita;
+    @Column(updatable = true, nullable = false)
+    private Date dia;
 
-    private EPS codigo_eps;
-
-    private TipoSangre codigo_tipo_sangre;
+    @ManyToOne
+    private Medico codigo_medico;
 }

@@ -1,4 +1,4 @@
-package co.edu.uniquindio.proyectoFinal.modelo;
+package co.edu.uniquindio.proyectoFinal.modelo.Entidades;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -8,17 +8,12 @@ import java.io.Serializable;
 @Entity
 @Getter
 @Setter
+@EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Atencion implements Serializable {
-
+public class Administrador extends Cuenta implements Serializable {
     @Id
     @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int codigo;
-    private String diagnostico, tratamiento, notasMedicas;
-
-    @OneToOne
-    private Cita codigo_cita;
 }

@@ -1,5 +1,6 @@
-package co.edu.uniquindio.proyectoFinal.modelo;
+package co.edu.uniquindio.proyectoFinal.modelo.Entidades;
 
+import co.edu.uniquindio.proyectoFinal.modelo.Enumeraciones.Especialidad;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -19,6 +20,7 @@ public class Medico extends Usuario implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int codigo;
 
+    @Column(nullable = false, updatable = true)
     private Especialidad codigo_especialidad;
 
     @OneToMany(mappedBy = "codigo_medico")

@@ -1,4 +1,4 @@
-package co.edu.uniquindio.proyectoFinal.modelo;
+package co.edu.uniquindio.proyectoFinal.modelo.Entidades;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -18,7 +18,11 @@ public class Mensaje implements Serializable {
     @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int codigo;
+
+    @Column(updatable = true, nullable = false)
     private Date fechaCreacion;
+
+    @Column(updatable = true, nullable = false, insertable = true)
     private String mensaje;
 
     @ManyToOne

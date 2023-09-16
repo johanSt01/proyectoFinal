@@ -1,5 +1,6 @@
-package co.edu.uniquindio.proyectoFinal.modelo;
+package co.edu.uniquindio.proyectoFinal.modelo.Entidades;
 
+import co.edu.uniquindio.proyectoFinal.modelo.Enumeraciones.EstadoCita;
 import jakarta.persistence.*;
 import lombok.*;
 import java.io.Serializable;
@@ -18,8 +19,14 @@ public class Cita implements Serializable {
     @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int codigo;
+
+    @Column(updatable = true, nullable = false)
     private Date fechaCreacion;
+
+    @Column(updatable = true, nullable = false)
     private Date fechaCita;
+
+    @Column(updatable = true, nullable = false)
     private String motivo;
 
     @OneToMany(mappedBy = "codigo_cita")

@@ -1,5 +1,6 @@
-package co.edu.uniquindio.proyectoFinal.modelo;
+package co.edu.uniquindio.proyectoFinal.modelo.Entidades;
 
+import co.edu.uniquindio.proyectoFinal.modelo.Enumeraciones.EstadoPQRS;
 import jakarta.persistence.*;
 import lombok.*;
 import java.io.Serializable;
@@ -18,7 +19,11 @@ public class PQRS implements Serializable {
     @EqualsAndHashCode.Include
     @GeneratedValue
     private int codigo;
+
+    @Column(updatable = true, nullable = false)
     private Date fechaCreacion;
+
+    @Column(nullable = false, insertable = true, updatable = false)
     private String tipo, motivo;
 
     @OneToMany (mappedBy = "codigo_pqrs")

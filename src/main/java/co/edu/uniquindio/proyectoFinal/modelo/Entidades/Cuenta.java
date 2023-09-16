@@ -1,4 +1,4 @@
-package co.edu.uniquindio.proyectoFinal.modelo;
+package co.edu.uniquindio.proyectoFinal.modelo.Entidades;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -19,7 +19,10 @@ public class Cuenta implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int codigo;
 
+    @Column(nullable = false, updatable = true)
     private String correo;
+
+    @Column(nullable = false, updatable = true, length = 20)
     private String contraseña;
 
     @OneToMany (mappedBy = "codigo_cuenta")
