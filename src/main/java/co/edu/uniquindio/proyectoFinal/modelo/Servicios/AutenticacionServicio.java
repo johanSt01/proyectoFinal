@@ -1,4 +1,4 @@
 package co.edu.uniquindio.proyectoFinal.modelo.Servicios;
 
-public interface MedicServicio {
+public interface AutenticacionServicio {
 }

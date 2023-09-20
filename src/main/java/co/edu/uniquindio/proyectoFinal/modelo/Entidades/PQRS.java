@@ -17,7 +17,7 @@ public class PQRS implements Serializable {
 
     @Id
     @EqualsAndHashCode.Include
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int codigo;
 
     @Column(updatable = true, nullable = false)
