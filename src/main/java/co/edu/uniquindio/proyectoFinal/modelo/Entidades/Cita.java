@@ -35,6 +35,9 @@ public class Cita implements Serializable {
     @ManyToOne
     private Paciente cedula_paciente;
 
+    @ManyToOne
+    private Medico codigo_medico;
+
     private EstadoCita codigo_estado;
 
     @OneToOne (mappedBy = "codigo_cita")

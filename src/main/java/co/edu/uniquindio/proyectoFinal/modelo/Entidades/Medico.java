@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -12,7 +13,6 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Medico extends Usuario implements Serializable {
 
     @Id
@@ -28,4 +28,7 @@ public class Medico extends Usuario implements Serializable {
 
     @OneToMany(mappedBy = "codigo_medico")
     private List<DiaLibre> diaLibre;
+
+    @OneToMany(mappedBy = "codigo_medico")
+    private List<Cita> cita;
 }

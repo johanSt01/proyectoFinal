@@ -6,8 +6,7 @@ public enum EstadoPQRS {
     cancelado("PQRS cancelada"),
     terminado("PQRS terminada");
 
-
-    private String nombre;
+    private static String nombre;
 
     private EstadoPQRS (String nombre){}
 }
