@@ -24,7 +24,7 @@ public class Cuenta implements Serializable {
     private String correo;
 
     @Column(nullable = false, updatable = true, length = 20)
-    private String contraseña;
+    private String contrasenia;
 
     @OneToMany (mappedBy = "codigo_cuenta")
     private List<Mensaje> mensaje;

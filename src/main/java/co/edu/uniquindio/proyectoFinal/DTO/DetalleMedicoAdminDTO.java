@@ -6,6 +6,7 @@ import co.edu.uniquindio.proyectoFinal.modelo.Enumeraciones.Especialidad;
 import java.util.List;
 
 public record DetalleMedicoAdminDTO(
+        int codigo,
         String nombre,
         String cedula,
         Ciudad ciudad,

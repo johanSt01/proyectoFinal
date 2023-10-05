@@ -1,5 +1,7 @@
 package co.edu.uniquindio.proyectoFinal.DTO;
 
+import co.edu.uniquindio.proyectoFinal.modelo.Enumeraciones.Ciudad;
+import co.edu.uniquindio.proyectoFinal.modelo.Enumeraciones.Especialidad;
 import jakarta.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
 
@@ -10,19 +12,21 @@ public record MedicoDTO (
         @NotNull
          String cedula,
         @NotNull
-         String nombreCompleto,
+         String nombre,
         @NotNull
         @Length(max = 10) //se le tiene que hacer a todos los campos que esten limitados en la base de datos
          String telefono,
         @NotNull
-         int ciudad,
+        Ciudad ciudad,
         @NotNull
-         int especialidad,
+        Especialidad especialidad,
         @NotNull
          String correo,
         @NotNull
          String contrasenia,
         @NotNull
-         List<HorarioDTO> horarioDTO
+        String URLfoto,
+        @NotNull
+         List<HorarioDTO> horario
 ){
 }

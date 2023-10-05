@@ -1,6 +1,7 @@
 package co.edu.uniquindio.proyectoFinal.modelo.Entidades;
 
 import co.edu.uniquindio.proyectoFinal.modelo.Enumeraciones.Ciudad;
+import co.edu.uniquindio.proyectoFinal.modelo.Enumeraciones.EstadoUsuario;
 import jakarta.persistence.*;
 import lombok.*;
 import java.io.Serializable;
@@ -26,5 +27,7 @@ public class Usuario extends Cuenta implements Serializable {
     private String URLfoto;
 
     @Column(nullable = false,length = 15)
-    private Ciudad codigo_ciudad;
+    private Ciudad ciudad;
+
+    private EstadoUsuario estadoUsuario;
 }
