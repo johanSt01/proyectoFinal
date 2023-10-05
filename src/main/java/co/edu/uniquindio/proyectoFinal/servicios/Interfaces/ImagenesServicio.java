@@ -1,4 +1,4 @@
-package co.edu.uniquindio.proyectoFinal.modelo.Servicios.Interfaces;
+package co.edu.uniquindio.proyectoFinal.servicios.Interfaces;
 
 public interface ImagenesServicio {
 

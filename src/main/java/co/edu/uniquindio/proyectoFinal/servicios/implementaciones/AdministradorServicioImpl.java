@@ -1,9 +1,9 @@
-package co.edu.uniquindio.proyectoFinal.modelo.Servicios.implementaciones;
+package co.edu.uniquindio.proyectoFinal.servicios.implementaciones;
 
 import co.edu.uniquindio.proyectoFinal.DTO.*;
 import co.edu.uniquindio.proyectoFinal.modelo.Entidades.Medico;
 import co.edu.uniquindio.proyectoFinal.modelo.Enumeraciones.EstadoUsuario;
-import co.edu.uniquindio.proyectoFinal.modelo.Servicios.Interfaces.AdministradorServicio;
+import co.edu.uniquindio.proyectoFinal.servicios.Interfaces.AdministradorServicio;
 import co.edu.uniquindio.proyectoFinal.repositorios.MedicoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

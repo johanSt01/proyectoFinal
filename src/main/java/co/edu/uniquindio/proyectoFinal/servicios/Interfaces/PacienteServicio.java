@@ -1,4 +1,4 @@
-package co.edu.uniquindio.proyectoFinal.modelo.Servicios.Interfaces;
+package co.edu.uniquindio.proyectoFinal.servicios.Interfaces;
 
 import co.edu.uniquindio.proyectoFinal.DTO.*;
 import co.edu.uniquindio.proyectoFinal.modelo.Entidades.Cita;

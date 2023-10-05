@@ -1,8 +1,5 @@
 package co.edu.uniquindio.proyectoFinal.DTO;
 
-public class HorarioDTO {
-
-    private String horaLlegada;
-    private String horaSalida;
+public record HorarioDTO ( String horaLlegada, String horaSalida){
 
 }
