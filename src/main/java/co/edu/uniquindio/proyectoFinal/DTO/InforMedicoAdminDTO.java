@@ -1,7 +1,10 @@
 package co.edu.uniquindio.proyectoFinal.DTO;
 
+import co.edu.uniquindio.proyectoFinal.modelo.Enumeraciones.Especialidad;
+
 public record InforMedicoAdminDTO (
-    int codigo,
     String nombre,
-    String especialidad){
+    String cedula,
+    String telefono,
+    Especialidad especialidad){
 }

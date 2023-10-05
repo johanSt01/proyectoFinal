@@ -1,9 +1,12 @@
 package co.edu.uniquindio.proyectoFinal.DTO;
 
+import co.edu.uniquindio.proyectoFinal.modelo.Entidades.Cita;
+import co.edu.uniquindio.proyectoFinal.modelo.Enumeraciones.EstadoPQRS;
+
 public record DetallerPQRSAdministradorDTO(
-        String numRadicado,
-        String fechaCreacion,
-        String citaAsociada,
-        String estado
+        String nombrePaciente,
+        String cedulaPaciente,
+        Cita cita,
+        EstadoPQRS estado
 ) {
 }

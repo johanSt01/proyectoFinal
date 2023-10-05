@@ -29,7 +29,7 @@ public class PQRS implements Serializable {
     @OneToMany (mappedBy = "codigo_pqrs")
     private List<Mensaje> mensaje;
 
-    private EstadoPQRS codigo_estado;
+    private EstadoPQRS estado;
 
     @ManyToOne
     private Cita codigo_cita;

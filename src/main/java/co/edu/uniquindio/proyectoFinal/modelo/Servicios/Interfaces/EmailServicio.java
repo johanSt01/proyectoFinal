@@ -1,4 +1,4 @@
-package co.edu.uniquindio.proyectoFinal.modelo.Servicios;
+package co.edu.uniquindio.proyectoFinal.modelo.Servicios.Interfaces;
 
 public interface EmailServicio {
 
