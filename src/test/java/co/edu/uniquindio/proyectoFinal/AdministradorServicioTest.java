@@ -26,8 +26,8 @@ public class AdministradorServicioTest {
 
         try {
             administradorServicio.crearMedico( new MedicoDTO(
-                    "2272",
-                    "Pepito",
+                    "1272",
+                    "juan",
                     "762762",
                     Ciudad.Armenia,
                     Especialidad.Odontologia,
@@ -38,6 +38,15 @@ public class AdministradorServicioTest {
             ));
         } catch (Exception e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    @Test
+    public void eliminarMedicoTest(){
+        try{
+            administradorServicio.eliminarMedico(1);
+        }catch (Exception e){
+            System.out.println(e.getMessage());
         }
 
     }

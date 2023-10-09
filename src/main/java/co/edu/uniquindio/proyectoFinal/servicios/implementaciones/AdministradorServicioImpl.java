@@ -48,6 +48,7 @@ public class AdministradorServicioImpl implements AdministradorServicio {
 
     private void asignarHorariosMedico(Medico medicoNuevo, List<HorarioDTO> horarios) {
         //falta por cuadrar
+
     }
 
     private boolean estaRepetidoCorreo(String correo) {
