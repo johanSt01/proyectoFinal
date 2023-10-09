@@ -1,4 +1,4 @@
-package co.edu.uniquindio.proyectoFinal.Repositorios;
+package co.edu.uniquindio.proyectoFinal.repositorios;
 
 import co.edu.uniquindio.proyectoFinal.modelo.Entidades.PQRS;
 import org.springframework.data.jpa.repository.JpaRepository;

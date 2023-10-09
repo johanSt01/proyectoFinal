@@ -1,6 +1,8 @@
 package co.edu.uniquindio.proyectoFinal.DTO;
 
+import jakarta.validation.constraints.NotNull;
+
 public record EnviarCorreoPacienteDTO (
-        String correo
+        @NotNull String correo
 ){
 }

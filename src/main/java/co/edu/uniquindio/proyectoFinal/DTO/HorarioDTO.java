@@ -1,5 +1,14 @@
 package co.edu.uniquindio.proyectoFinal.DTO;
 
-public record HorarioDTO ( String horaLlegada, String horaSalida){
+import jakarta.validation.constraints.NotNull;
+
+import java.time.LocalTime;
+
+public record HorarioDTO (
+        @NotNull
+        LocalTime horaLlegada,
+        @NotNull
+        LocalTime horaSalida
+) {
 
 }

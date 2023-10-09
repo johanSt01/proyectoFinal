@@ -2,11 +2,12 @@ package co.edu.uniquindio.proyectoFinal.DTO;
 
 import jakarta.validation.constraints.NotNull;
 
-public record RespuestaPQRSDTO(
-        @NotNull int codigoPQRS,
+import java.time.LocalTime;
+
+public record CitasHoyMedicoDTO(
         @NotNull
-        int codigoUsuario,
+        LocalTime hora,
         @NotNull
-        String mensaje
+        String nombre
 ) {
 }

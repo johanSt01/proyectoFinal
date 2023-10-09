@@ -1,18 +1,15 @@
 package co.edu.uniquindio.proyectoFinal.servicios.Interfaces;
 
-import co.edu.uniquindio.proyectoFinal.DTO.AtencionCitaMedicoDTO;
-import co.edu.uniquindio.proyectoFinal.DTO.CitaMedicoDTO;
-import co.edu.uniquindio.proyectoFinal.DTO.DiaLibreMedicoDTO;
-import co.edu.uniquindio.proyectoFinal.DTO.historialCitasMedico;
+import co.edu.uniquindio.proyectoFinal.DTO.*;
 
 import java.util.List;
 
 public interface MedicoServicio {
 
-    List<CitaMedicoDTO> listarCitasPendientes(int codigo)throws Exception;
+    List<CitaMedicoDTO> listarCitasPendientes()throws Exception;
     void atenderCita(AtencionCitaMedicoDTO atencionCitaMedicoDTO) throws Exception;
-    List<historialCitasMedico> listarCitasMedicas(int codigoPaciente);
+    List<HistorialCitasMedicoDTO> listarHistorialCitas()throws Exception;
     void agendarDiaLibre(DiaLibreMedicoDTO diaLibreDTO) throws Exception;
-    List<CitaMedicoDTO> listarCitasRealizadas();
+    List<CitasHoyMedicoDTO> listarCitasRealizadas()throws Exception;
 
 }
