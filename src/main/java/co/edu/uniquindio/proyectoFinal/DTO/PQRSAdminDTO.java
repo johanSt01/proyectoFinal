@@ -6,7 +6,7 @@ import co.edu.uniquindio.proyectoFinal.modelo.Enumeraciones.EstadoPQRS;
 public record PQRSAdminDTO(
         String nombrePaciente,
         String cedulaPaciente,
-        Cita cita,
+        String motivoConsulta,
         EstadoPQRS estado
 ) {
 }

@@ -4,6 +4,7 @@ import co.edu.uniquindio.proyectoFinal.modelo.Enumeraciones.EstadoCita;
 import jakarta.persistence.*;
 import lombok.*;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -21,25 +22,25 @@ public class Cita implements Serializable {
     private int codigo;
 
     @Column(updatable = true, nullable = false)
-    private Date fechaCreacion;
+    private LocalDateTime fechaCreacion;
 
     @Column(updatable = true, nullable = false)
-    private Date fechaCita;
+    private LocalDateTime fechaCita;
 
     @Column(updatable = true, nullable = false)
     private String motivo;
 
-    @OneToMany(mappedBy = "codigo_cita")
+    @OneToMany(mappedBy = "codigoCita")
     private List<PQRS> pqrs;
 
     @ManyToOne
-    private Paciente cedula_paciente;
+    private Paciente cedulaPaciente;
 
     @ManyToOne
-    private Medico codigo_medico;
+    private Medico codigoMedico;
 
-    private EstadoCita codigo_estado;
+    private EstadoCita codigoEstado;
 
-    @OneToOne (mappedBy = "codigo_cita")
+    @OneToOne (mappedBy = "codigoCita")
     private Atencion atencion;
 }

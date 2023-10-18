@@ -17,13 +17,13 @@ public class Usuario extends Cuenta implements Serializable {
     @Column(unique = true, length = 12, insertable = true, updatable = true, nullable = false)
     private String cedula;
 
-    @Column(unique = false, length = 30, insertable = true, updatable = true, nullable = false)
+    @Column(unique = false, length = 200, insertable = true, updatable = true, nullable = false)
     private String nombre;
 
     @Column(unique = true, length = 10, insertable = true, updatable = true, nullable = false)
     private String telefono;
 
-    @Column(unique = true, insertable = true, updatable = true, nullable = false)
+    @Column(unique = false, insertable = true, updatable = true, nullable = false)
     private String URLfoto;
 
     @Column(nullable = false,length = 15)

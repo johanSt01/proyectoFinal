@@ -6,6 +6,7 @@ import lombok.*;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 
 @Entity
@@ -23,12 +24,12 @@ public class Medico extends Usuario implements Serializable {
     @Column(nullable = false, updatable = true)
     private Especialidad especialidad;
 
-    @OneToMany(mappedBy = "codigo_medico")
-    private List<Horario> horario;
+    @Column(nullable = false, updatable = true)
+    private LocalTime horaInicio, horaFin;
 
     @OneToMany(mappedBy = "codigo_medico")
     private List<DiaLibre> diaLibre;
 
-    @OneToMany(mappedBy = "codigo_medico")
+    @OneToMany(mappedBy = "codigoMedico")
     private List<Cita> cita;
 }

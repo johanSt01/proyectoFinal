@@ -17,18 +17,13 @@ import java.util.List;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Paciente extends Usuario implements Serializable  {
 
-    @Id
-    @EqualsAndHashCode.Include
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int codigo;
-
     @Column(updatable = true, nullable = false)
     private Date fecha;
 
     @Column(nullable = true, insertable = true, updatable = true)
     private String alergias;
 
-    @OneToMany(mappedBy = "cedula_paciente")
+    @OneToMany(mappedBy = "cedulaPaciente")
     private List<Cita> cita;
 
     private EPS codigo_eps;

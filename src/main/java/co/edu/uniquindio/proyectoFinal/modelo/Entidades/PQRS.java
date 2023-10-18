@@ -26,11 +26,11 @@ public class PQRS implements Serializable {
     @Column(nullable = false, insertable = true, updatable = false)
     private String tipo, motivo;
 
-    @OneToMany (mappedBy = "codigo_pqrs")
+    @OneToMany (mappedBy = "codigoPqrs")
     private List<Mensaje> mensaje;
 
     private EstadoPQRS estado;
 
     @ManyToOne
-    private Cita codigo_cita;
+    private Cita codigoCita;
 }

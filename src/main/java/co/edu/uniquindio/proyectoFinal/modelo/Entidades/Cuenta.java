@@ -26,7 +26,7 @@ public class Cuenta implements Serializable {
     @Column(nullable = false, updatable = true, length = 20)
     private String contrasenia;
 
-    @OneToMany (mappedBy = "codigo_cuenta")
+    @OneToMany (mappedBy = "codigoCuenta")
     private List<Mensaje> mensaje;
 
 }
