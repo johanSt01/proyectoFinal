@@ -44,7 +44,7 @@ public class MedicoServicioImpl implements MedicoServicio {
                         c.getCedulaPaciente().getNombre()
                 ));
             }
-
+        System.out.println(respuesta);
             return respuesta;
     }
 
@@ -88,6 +88,8 @@ public class MedicoServicioImpl implements MedicoServicio {
                     c.getAtencion().getDiagnostico()
                     ));
         }
+
+        System.out.println(respuesta);
         return respuesta;
     }
 
@@ -123,6 +125,7 @@ public class MedicoServicioImpl implements MedicoServicio {
                 ));
             }
         }
+        System.out.println("citas realizadas: "+citas);
         return respuesta;
     }
 
@@ -140,6 +143,9 @@ public class MedicoServicioImpl implements MedicoServicio {
 
         cita.setFechaCita(fecha);
         cita.setHoraCita(hora);
+
+        citaRepo.save(cita);
+        System.out.println("si se pudo posponer la cita");
     }
 
     @Override

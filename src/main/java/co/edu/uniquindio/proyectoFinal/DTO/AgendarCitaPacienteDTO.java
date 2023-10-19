@@ -1,16 +1,21 @@
 package co.edu.uniquindio.proyectoFinal.DTO;
 
+import co.edu.uniquindio.proyectoFinal.modelo.Entidades.Medico;
+import co.edu.uniquindio.proyectoFinal.modelo.Enumeraciones.Especialidad;
 import jakarta.validation.constraints.NotNull;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 public record AgendarCitaPacienteDTO(
         @NotNull
-        String especialidad,
+        Especialidad especialidad,
         @NotNull
-        String medico,
+        Medico medico,
         @NotNull
-        String fecha,
+        LocalDate fecha,
         @NotNull
-        String hora,
+        LocalTime hora,
         @NotNull
         String motivoCita
 ) {

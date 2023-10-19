@@ -19,7 +19,7 @@ public class MedicoServicioTest {
     @Test
     public void diaDescansoMedico(){
         try {
-            medicoServicio.agendarDiaLibre(LocalDate.of(2023, 10, 29), 1);
+            medicoServicio.agendarDiaLibre(LocalDate.of(2023, 11, 29), 2);
         }catch (Exception e){
             System.out.println(e.getMessage());
         }
@@ -28,7 +28,34 @@ public class MedicoServicioTest {
     @Test
     public void posponerCitaTest(){
         try {
-            medicoServicio.posponerCita(1, LocalDate.of(2023, 10, 29), LocalTime.of(14, 30, 0));
+            medicoServicio.posponerCita(1, LocalDate.of(2023, 11, 20), LocalTime.of(9, 30, 0));
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @Test
+    public void listarCitas(){
+        try{
+            medicoServicio.listarHistorialCitas();
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @Test
+    public void citasPendientes(){
+        try{
+            medicoServicio.listarCitasPendientes();
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @Test
+    public void citasrealizadas(){
+        try{
+            medicoServicio.listarCitasRealizadas();
         }catch (Exception e){
             System.out.println(e.getMessage());
         }

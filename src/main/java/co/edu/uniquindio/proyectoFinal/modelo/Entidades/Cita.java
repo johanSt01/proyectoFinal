@@ -1,5 +1,6 @@
 package co.edu.uniquindio.proyectoFinal.modelo.Entidades;
 
+import co.edu.uniquindio.proyectoFinal.modelo.Enumeraciones.Especialidad;
 import co.edu.uniquindio.proyectoFinal.modelo.Enumeraciones.EstadoCita;
 import jakarta.persistence.*;
 import lombok.*;
@@ -46,6 +47,8 @@ public class Cita implements Serializable {
     private Medico codigoMedico;
 
     private EstadoCita codigoEstado;
+
+    private Especialidad especialidad;
 
     @OneToOne (mappedBy = "codigoCita")
     private Atencion atencion;
