@@ -1,11 +1,18 @@
 package co.edu.uniquindio.proyectoFinal.repositorios;
 
 import co.edu.uniquindio.proyectoFinal.modelo.Entidades.Cita;
-import co.edu.uniquindio.proyectoFinal.modelo.Entidades.Medico;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.List;
+
 @Repository
 public interface CitaRepository extends JpaRepository <Cita, Integer> {
-    Cita findByCodigo(String codigo);
+    Cita findByCodigo(int codigo);
+
+    List<Cita> findByCodigoMedicoCodigoAndFechaCita(int codigoMedico, LocalDate fecha);
+
+    List<Cita> findByCodigoMedicoCodigoAndFechaCitaAndHoraCita(int codigoMedico, LocalDate fecha, LocalTime hora);
 }

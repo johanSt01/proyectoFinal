@@ -9,5 +9,7 @@ public interface MedicoRepository extends JpaRepository <Medico, Integer> {
 
     Medico findByCorreo(String correo);
 
+    Medico findByCorreoAndContrasenia(String corre, String contrasenia);
+
     Medico findByCedula(String cedula);
 }

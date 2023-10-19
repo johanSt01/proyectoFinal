@@ -30,5 +30,5 @@ public class Horario implements Serializable {
     private Time horaFin;
 
     @ManyToOne
-    private Medico codigo_medico;
+    private Medico codigoMedico;
 }

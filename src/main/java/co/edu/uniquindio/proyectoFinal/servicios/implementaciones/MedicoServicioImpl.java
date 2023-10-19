@@ -1,12 +1,20 @@
 package co.edu.uniquindio.proyectoFinal.servicios.implementaciones;
 
 import co.edu.uniquindio.proyectoFinal.DTO.*;
+import co.edu.uniquindio.proyectoFinal.modelo.Entidades.Atencion;
 import co.edu.uniquindio.proyectoFinal.modelo.Entidades.Cita;
+import co.edu.uniquindio.proyectoFinal.modelo.Entidades.DiaLibre;
+import co.edu.uniquindio.proyectoFinal.modelo.Entidades.Medico;
+import co.edu.uniquindio.proyectoFinal.repositorios.AtencionRepository;
 import co.edu.uniquindio.proyectoFinal.repositorios.CitaRepository;
+import co.edu.uniquindio.proyectoFinal.repositorios.DiaLibreRepository;
+import co.edu.uniquindio.proyectoFinal.repositorios.MedicoRepository;
 import co.edu.uniquindio.proyectoFinal.servicios.Interfaces.MedicoServicio;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +23,9 @@ import java.util.List;
 public class MedicoServicioImpl implements MedicoServicio {
 
     private final CitaRepository citaRepo;
+    private final DiaLibreRepository diaLibreRepo;
+    private final MedicoRepository medicoRepository;
+    private final AtencionRepository atencionRepo;
     @Override
     public List<CitaMedicoDTO> listarCitasPendientes() throws Exception {
 
@@ -30,7 +41,7 @@ public class MedicoServicioImpl implements MedicoServicio {
                 respuesta.add(new CitaMedicoDTO(
                         c.getFechaCita(),
                         c.getHoraCita(),
-                        c.getCedula_paciente().getNombre()
+                        c.getCedulaPaciente().getNombre()
                 ));
             }
 
@@ -38,11 +49,25 @@ public class MedicoServicioImpl implements MedicoServicio {
     }
 
     @Override
-    public void atenderCita(AtencionCitaMedicoDTO atencionCitaMedicoDTO) throws Exception {
+    public int atenderCita(AtencionCitaMedicoDTO atencionCita) throws Exception {
+        Cita cita = citaRepo.findByCodigo(atencionCita.codigoCita());
 
+        if (cita == null) {
+            throw new Exception("No existe una cita con ese codigo");
+        }
+
+        Atencion atencion = new Atencion();
+        atencion.setDiagnostico(atencionCita.diagnostico());
+        atencion.setTratamiento(atencionCita.tratamiento());
+        atencion.setNotasMedicas(atencionCita.notas());
+
+        return atencionRepo.save(atencion).getCodigo();
     }
 
-    private boolean existe(String codigo) {
+
+
+
+    private boolean existe(int codigo) {
         return citaRepo.findByCodigo(codigo) != null;
     }
 
@@ -59,7 +84,7 @@ public class MedicoServicioImpl implements MedicoServicio {
             respuesta.add(new HistorialCitasMedicoDTO(
                     c.getFechaCita(),
                     c.getHoraCita(),
-                    c.getCedula_paciente().getNombre(),
+                    c.getCedulaPaciente().getNombre(),
                     c.getAtencion().getDiagnostico()
                     ));
         }
@@ -67,8 +92,17 @@ public class MedicoServicioImpl implements MedicoServicio {
     }
 
     @Override
-    public void agendarDiaLibre(DiaLibreMedicoDTO diaLibreDTO) throws Exception {
+    public DiaLibre agendarDiaLibre(LocalDate diaSeleccionado, int codMedico) throws Exception {
 
+        if(!citaRepo.findByCodigoMedicoCodigoAndFechaCita(codMedico, diaSeleccionado).isEmpty()){
+            throw new Exception("Hay citas programadas para el dia seleccionado, ingrese otro dia");
+        }
+
+        DiaLibre opcion = new DiaLibre();
+        opcion.setCodigoMedico( medicoRepository.findById(codMedico).get());
+        opcion.setDia(diaSeleccionado);
+
+        return diaLibreRepo.save(opcion);
     }
 
     @Override
@@ -82,11 +116,40 @@ public class MedicoServicioImpl implements MedicoServicio {
 
         List<CitasHoyMedicoDTO> respuesta = new ArrayList<>();
         for (Cita c: citas){
-            respuesta.add(new CitasHoyMedicoDTO(
-                    c.getHoraCita(),
-                    c.getCedula_paciente().getNombre()
-            ));
+            if(c.getFechaCita().isBefore( LocalDate.now() )) {
+                respuesta.add(new CitasHoyMedicoDTO(
+                        c.getHoraCita(),
+                        c.getCedulaPaciente().getNombre()
+                ));
+            }
         }
         return respuesta;
     }
+
+    @Override
+    public void posponerCita(int codigoCita, LocalDate fecha, LocalTime hora) throws Exception {
+
+        Cita cita = citaRepo.findByCodigo(codigoCita);
+
+        if (cita==null){
+            throw new Exception("No hay citas con este id");
+        }
+        if (!citaRepo.findByCodigoMedicoCodigoAndFechaCitaAndHoraCita(cita.getCedulaPaciente().getCodigo(), fecha, hora).isEmpty()){
+            throw new Exception("Ya tienes citas para este dia y a esa hora");
+        }
+
+        cita.setFechaCita(fecha);
+        cita.setHoraCita(hora);
+    }
+
+    @Override
+    public boolean iniciarSesion(LoginDTO loginDTO) throws Exception {
+        Medico prueba = medicoRepository.findByCorreoAndContrasenia(loginDTO.correo(), loginDTO.contrasenia());
+        if(prueba==null){
+            throw new Exception("No hay un usuario medico registrado con ese correo y esa contraseña");
+        }
+
+        return true;//inicia sesion
+    }
+
 }

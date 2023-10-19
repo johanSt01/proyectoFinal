@@ -39,12 +39,12 @@ public class Cita implements Serializable {
     private List<PQRS> pqrs;
 
     @ManyToOne
-    private Paciente cedula_paciente;
+    private Paciente cedulaPaciente;
 
     @ManyToOne
-    private Medico codigo_medico;
+    private Medico codigoMedico;
 
-    private EstadoCita codigo_estado;
+    private EstadoCita codigoEstado;
 
     @OneToOne (mappedBy = "codigo_cita")
     private Atencion atencion;

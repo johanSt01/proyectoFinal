@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -14,21 +15,15 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Paciente extends Usuario implements Serializable  {
 
-    @Id
-    @EqualsAndHashCode.Include
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int codigo;
-
     @Column(updatable = true, nullable = false)
-    private Date fecha;
+    private LocalDate fechaNacimiento;
 
     @Column(nullable = true, insertable = true, updatable = true)
     private String alergias;
 
-    @OneToMany(mappedBy = "cedula_paciente")
+    @OneToMany(mappedBy = "cedulaPaciente")
     private List<Cita> cita;
 
     private EPS codigo_eps;
