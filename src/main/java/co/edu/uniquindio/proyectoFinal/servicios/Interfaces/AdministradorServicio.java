@@ -13,8 +13,8 @@ public interface AdministradorServicio {
     List<InforMedicoAdminDTO> listarMedico() throws Exception;
     DetalleMedicoAdminDTO obtenerMedico(int codigo) throws Exception;
     List<PQRSAdminDTO> listarPQRS();
-    int responderPQRS(RespuestaPQRSDTO respuesta) throws Exception;
-    DetallerPQRSAdminDTO verDetallePQRS(int codigo) throws Exception;
+    int responderPQRS(RegistroRespuestaPQRSDTO respuesta) throws Exception;
+    DetallePQRSAdminDTO verDetallePQRS(int codigo) throws Exception;
     void cambiarEstadoPQRS (int codigoPQRS, EstadoPQRS estadoPQRS) throws Exception;
     List<CitaAdminDTO> listarCitas() throws Exception;
 

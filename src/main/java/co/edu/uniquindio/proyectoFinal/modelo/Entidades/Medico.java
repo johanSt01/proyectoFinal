@@ -16,18 +16,13 @@ import java.util.List;
 @AllArgsConstructor
 public class Medico extends Usuario implements Serializable {
 
-    @Id
-    @EqualsAndHashCode.Include
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int codigo;
-
     @Column(nullable = false, updatable = true)
     private Especialidad especialidad;
 
     @Column(nullable = false, updatable = true)
     private LocalTime horaInicio, horaFin;
 
-    @OneToMany(mappedBy = "codigo_medico")
+    @OneToMany(mappedBy = "codigoMedico")
     private List<DiaLibre> diaLibre;
 
     @OneToMany(mappedBy = "codigoMedico")

@@ -1,19 +1,15 @@
 package co.edu.uniquindio.proyectoFinal.servicios.implementaciones;
 
 import co.edu.uniquindio.proyectoFinal.DTO.*;
-import co.edu.uniquindio.proyectoFinal.modelo.Entidades.Cita;
-import co.edu.uniquindio.proyectoFinal.modelo.Entidades.Medico;
-import co.edu.uniquindio.proyectoFinal.modelo.Entidades.PQRS;
+import co.edu.uniquindio.proyectoFinal.modelo.Entidades.*;
 import co.edu.uniquindio.proyectoFinal.modelo.Enumeraciones.EstadoPQRS;
 import co.edu.uniquindio.proyectoFinal.modelo.Enumeraciones.EstadoUsuario;
-import co.edu.uniquindio.proyectoFinal.repositorios.CitaRepository;
-import co.edu.uniquindio.proyectoFinal.repositorios.CuentaRepository;
-import co.edu.uniquindio.proyectoFinal.repositorios.MedicoRepository;
-import co.edu.uniquindio.proyectoFinal.repositorios.PQRSRepository;
+import co.edu.uniquindio.proyectoFinal.repositorios.*;
 import co.edu.uniquindio.proyectoFinal.servicios.Interfaces.AdministradorServicio;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -25,7 +21,7 @@ public class AdministradorServicioImpl implements AdministradorServicio {
     //@Autowired //intancia del objeto
     private final MedicoRepository medicoRepo;
     private final PQRSRepository pqrsRepo;
-    private final MedicoRepository mensajeRepo;
+    private final MensajeRepository mensajeRepo;
     private final CuentaRepository cuentaRepo;
     private final CitaRepository citaRepo;
 
@@ -170,9 +166,9 @@ public class AdministradorServicioImpl implements AdministradorServicio {
     }
 
     @Override
-    public int responderPQRS(RespuestaPQRSDTO ResgistroRespuesta) throws Exception {
+    public int responderPQRS(RegistroRespuestaPQRSDTO ResgistroRespuesta) throws Exception {
 
-        /*Optional<PQRS> opcionalPQRS = pqrsRepo.findById(ResgistroRespuesta.codigoPQRS());
+        Optional<PQRS> opcionalPQRS = pqrsRepo.findById(ResgistroRespuesta.codigoPQRS());
 
         if(opcionalPQRS.isEmpty()){
             throw new Exception("No existe un pqrs con el código: " + ResgistroRespuesta.codigoPQRS());
@@ -185,34 +181,44 @@ public class AdministradorServicioImpl implements AdministradorServicio {
         }
 
         Mensaje mensajeNuevo = new Mensaje();
-        mensajeNuevo.setCodigo_pqrs(opcionalPQRS.get());
+        mensajeNuevo.setCodigoPqrs(opcionalPQRS.get());
         mensajeNuevo.setFechaCreacion(LocalDateTime.now());
-        mensajeNuevo.setCodigo_cuenta(opcionalCuenta.get());
+        mensajeNuevo.setCodigoCuenta(opcionalCuenta.get());
         mensajeNuevo.setMensaje(ResgistroRespuesta.mensaje());
 
         Mensaje respuesta = mensajeRepo.save(mensajeNuevo);
 
-        return respuesta.getCodigo();*/
-
-        return 0;
+        return respuesta.getCodigo();
     }
 
     @Override
-    public DetallerPQRSAdminDTO verDetallePQRS(int codigo) throws Exception {
+    public DetallePQRSAdminDTO verDetallePQRS(int codigo) throws Exception {
 
-        /*Optional<PQRS> opcional = pqrsRepo.findById(codigo);
+        Optional<PQRS> opcional = pqrsRepo.findById(codigo);
 
         if(opcional.isEmpty()){
             throw new Exception("No existe una pqrs con el código" + codigo);
         }
 
         PQRS buscado = opcional.get();
-        List<Mensaje> mensajes = mensajeRepo.findAllByCodigo_pqrsCodigo(codigo);
+        List<Mensaje> mensajes = mensajeRepo.findAllByCodigoPqrsCodigo(codigo);
 
-        *//*return new DetallerPQRSAdminDTO(
+        return new DetallePQRSAdminDTO(
+            buscado.getCodigoCita().getCedulaPaciente().getNombre(),
+            buscado.getCodigoCita().getCedulaPaciente().getCedula(),
+            buscado.getCodigoCita(),
+            buscado.getEstado(),
+            convertirRespuestasDTO(mensajes)
+        );
+    }
 
-        );*/
-        return null;
+    private List<RespuestaPQRSDTO> convertirRespuestasDTO(List<Mensaje> mensajes) {
+        return mensajes.stream().map(m -> new RespuestaPQRSDTO(
+                m.getCodigo(),
+                m.getMensaje(),
+                m.getCodigoCuenta().getCorreo(),
+                m.getFechaCreacion()
+        )).toList();
     }
 
     @Override
@@ -228,8 +234,6 @@ public class AdministradorServicioImpl implements AdministradorServicio {
 
         pqrsRepo.save(pqrs);
     }
-
-
 
     @Override
     public List<CitaAdminDTO> listarCitas() throws Exception {

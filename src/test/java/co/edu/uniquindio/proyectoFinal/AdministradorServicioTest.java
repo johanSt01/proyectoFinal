@@ -1,7 +1,6 @@
 package co.edu.uniquindio.proyectoFinal;
 
 import co.edu.uniquindio.proyectoFinal.DTO.*;
-import co.edu.uniquindio.proyectoFinal.modelo.Entidades.Medico;
 import co.edu.uniquindio.proyectoFinal.modelo.Enumeraciones.Ciudad;
 import co.edu.uniquindio.proyectoFinal.modelo.Enumeraciones.Especialidad;
 import co.edu.uniquindio.proyectoFinal.modelo.Enumeraciones.EstadoPQRS;
@@ -60,7 +59,6 @@ public class AdministradorServicioTest {
 
             administradorServicio.actualizarMedico(medicoDTONuevo);
 
-
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -91,6 +89,32 @@ public class AdministradorServicioTest {
         try {
             List<PQRSAdminDTO> lista = administradorServicio.listarPQRS();
             lista.forEach( System.out::println);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Test
+    public void responderPQRSTest(){
+        try {
+
+        }catch (Exception e){
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Test
+    public void DetallePQRSAdminDTOTest(){
+        try {
+            DetallePQRSAdminDTO detallePQRSAdminDTO = administradorServicio.verDetallePQRS(1);
+
+            DetallePQRSAdminDTO detallePQRSAdminDTONuevo = new DetallePQRSAdminDTO(
+                    detallePQRSAdminDTO.nombrePaciente(),
+                    detallePQRSAdminDTO.cedulaPaciente(),
+                    detallePQRSAdminDTO.cita(),
+                    detallePQRSAdminDTO.estado(),
+                    detallePQRSAdminDTO.mensajes()
+            );
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

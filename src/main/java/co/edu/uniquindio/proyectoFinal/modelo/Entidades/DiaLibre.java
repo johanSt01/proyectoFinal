@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -20,8 +21,8 @@ public class DiaLibre implements Serializable {
     private int codigo;
 
     @Column(updatable = true, nullable = false)
-    private Date dia;
+    private LocalDate dia;
 
     @ManyToOne
-    private Medico codigo_medico;
+    private Medico codigoMedico;
 }
