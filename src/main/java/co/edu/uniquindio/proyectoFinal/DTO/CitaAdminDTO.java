@@ -1,10 +1,10 @@
 package co.edu.uniquindio.proyectoFinal.DTO;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public record CitaAdminDTO(
         String medico,
-        LocalDateTime fechaAtencion,
+        LocalDate fechaAtencion,
         String paciente
 ) {
 }

@@ -8,6 +8,7 @@ import co.edu.uniquindio.proyectoFinal.servicios.Interfaces.AdministradorServici
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
 import java.time.LocalTime;
 import java.util.List;
 
@@ -112,7 +113,7 @@ public class AdministradorServicioTest {
                     detallePQRSAdminDTO.nombrePaciente(),
                     detallePQRSAdminDTO.cedulaPaciente(),
                     detallePQRSAdminDTO.cita(),
-                    detallePQRSAdminDTO.estado(),
+                    detallePQRSAdminDTO.estadoPQRS(),
                     detallePQRSAdminDTO.mensajes()
             );
         } catch (Exception e) {

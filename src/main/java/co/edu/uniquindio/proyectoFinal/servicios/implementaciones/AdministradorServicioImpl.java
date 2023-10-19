@@ -35,6 +35,14 @@ public class AdministradorServicioImpl implements AdministradorServicio {
             throw new Exception("El correo "+medicoDTO.cedula()+" ya está en uso");
         }
 
+        Medico medico = datosMedico(medicoDTO);
+
+        Medico medicoNuevo = medicoRepo.save(medico);
+
+        return medicoNuevo.getCodigo();
+    }
+
+    private static Medico datosMedico(MedicoDTO medicoDTO) {
         Medico medico = new Medico();
         medico.setCedula(medicoDTO.cedula() );
         medico.setTelefono(medicoDTO.telefono());
@@ -47,10 +55,7 @@ public class AdministradorServicioImpl implements AdministradorServicio {
         medico.setContrasenia(medicoDTO.contrasenia());
         medico.setURLfoto(medicoDTO.URLfoto());
         medico.setEstadoUsuario(EstadoUsuario.Activo);
-
-        Medico medicoNuevo = medicoRepo.save(medico);
-
-        return medicoNuevo.getCodigo();
+        return medico;
     }
 
     private boolean estaRepetidoCorreo(String correo) {
@@ -157,7 +162,7 @@ public class AdministradorServicioImpl implements AdministradorServicio {
             respuesta.add(new PQRSAdminDTO(
                 p.getCodigoCita().getCedulaPaciente().getNombre(),
                 p.getCodigoCita().getCedulaPaciente().getCedula(),
-                p.getCodigoCita().getMotivo(),
+                p.getCodigoCita(),
                 p.getEstado()
             ));
         }

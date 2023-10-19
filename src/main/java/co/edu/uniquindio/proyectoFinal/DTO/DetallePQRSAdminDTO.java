@@ -4,7 +4,9 @@ import co.edu.uniquindio.proyectoFinal.modelo.Entidades.Cita;
 import co.edu.uniquindio.proyectoFinal.modelo.Enumeraciones.EstadoPQRS;
 import jakarta.validation.constraints.NotNull;
 
-public record DetallerPQRSAdministradorDTO(
+import java.util.List;
+
+public record DetallePQRSAdminDTO(
         @NotNull
         String nombrePaciente,
         @NotNull
@@ -12,6 +14,7 @@ public record DetallerPQRSAdministradorDTO(
         @NotNull
         Cita cita,
         @NotNull
-        EstadoPQRS estado
+        EstadoPQRS estadoPQRS,
+        List<RespuestaPQRSDTO> mensajes
 ) {
 }

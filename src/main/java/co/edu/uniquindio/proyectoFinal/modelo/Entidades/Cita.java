@@ -6,6 +6,7 @@ import lombok.*;
 import java.io.Serializable;
 import java.sql.Time;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Date;
 import java.util.List;
@@ -35,7 +36,7 @@ public class Cita implements Serializable {
     @Column(updatable = true, nullable = false)
     private String motivo;
 
-    @OneToMany(mappedBy = "codigo_cita")
+    @OneToMany(mappedBy = "codigoCita")
     private List<PQRS> pqrs;
 
     @ManyToOne
@@ -46,6 +47,6 @@ public class Cita implements Serializable {
 
     private EstadoCita codigoEstado;
 
-    @OneToOne (mappedBy = "codigo_cita")
+    @OneToOne (mappedBy = "codigoCita")
     private Atencion atencion;
 }
