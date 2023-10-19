@@ -1,12 +1,11 @@
 package co.edu.uniquindio.proyectoFinal.DTO;
 
-import jakarta.validation.constraints.NotNull;
+import java.time.LocalDateTime;
 
 public record RespuestaPQRSDTO(
-        @NotNull int codigoPQRS,
-        @NotNull
-        int codigoUsuario,
-        @NotNull
-        String mensaje
+    int codigoMensaje,
+    String mensaje,
+    String nombreUsuario,
+    LocalDateTime fecha
 ) {
 }

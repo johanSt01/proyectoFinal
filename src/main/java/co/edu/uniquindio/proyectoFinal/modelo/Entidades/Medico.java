@@ -18,12 +18,12 @@ public class Medico extends Usuario implements Serializable {
     @Column(nullable = false, updatable = true)
     private Especialidad especialidad;
 
-    @OneToMany(mappedBy = "codigoMedico")
-    private List<Horario> horario;
+    @Column(nullable = false, updatable = true)
+    private LocalTime horaInicio, horaFin;
 
-    @OneToOne(mappedBy = "codigoMedico")
+    @OneToOne(mappedBy = "codigo_medico")
     private DiaLibre diaLibre;
 
-    @OneToMany(mappedBy = "codigoMedico")
+    @OneToMany(mappedBy = "codigo_medico")
     private List<Cita> cita;
 }

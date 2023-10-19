@@ -28,5 +28,5 @@ public class Atencion implements Serializable {
     private String notasMedicas;
 
     @OneToOne
-    private Cita codigo_cita;
+    private Cita codigoCita;
 }

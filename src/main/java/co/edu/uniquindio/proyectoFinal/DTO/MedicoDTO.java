@@ -5,28 +5,31 @@ import co.edu.uniquindio.proyectoFinal.modelo.Enumeraciones.Especialidad;
 import jakarta.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
 
+import java.time.LocalTime;
 import java.util.List;
 
 public record MedicoDTO (
 
         @NotNull
-         String cedula,
+        String cedula,
         @NotNull
-         String nombre,
+        String nombre,
         @NotNull
         @Length(max = 10) //se le tiene que hacer a todos los campos que esten limitados en la base de datos
-         String telefono,
+        String telefono,
         @NotNull
         Ciudad ciudad,
         @NotNull
         Especialidad especialidad,
         @NotNull
-         String correo,
+        LocalTime horaInicio,
         @NotNull
-         String contrasenia,
+        LocalTime horaFin,
         @NotNull
-        String URLfoto,
+        String correo,
         @NotNull
-         List<HorarioDTO> horario
+        String contrasenia,
+        @NotNull
+        String URLfoto
 ){
 }

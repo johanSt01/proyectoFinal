@@ -2,29 +2,37 @@ package co.edu.uniquindio.proyectoFinal.DTO;
 
 import co.edu.uniquindio.proyectoFinal.modelo.Enumeraciones.Ciudad;
 import co.edu.uniquindio.proyectoFinal.modelo.Enumeraciones.Especialidad;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+import org.hibernate.validator.constraints.Length;
 
-import java.util.List;
+import java.time.LocalTime;
 
 public record DetalleMedicoAdminDTO(
-        @NotNull
+        @Positive
         int codigo,
-        @NotNull
+        @NotEmpty
+        @Length(max = 200)
         String nombre,
-        @NotNull
+        @Length(max = 12)
         String cedula,
         @NotNull
         Ciudad ciudad,
         @NotNull
         Especialidad especialidad,
         @NotNull
+        LocalTime horaInicio,
+        @NotNull
+        LocalTime horaFin,
+        @Length(max = 10)
         String telefono,
-        @NotNull
+        @NotEmpty
+        @Email
+        @Length (max = 80)
         String correo,
-        @NotNull
-        String urlFoto,
-        @NotNull
-        List<HorarioDTO> horarioDTO
+        @NotEmpty
+        String urlFoto
 ) {
-
 }
