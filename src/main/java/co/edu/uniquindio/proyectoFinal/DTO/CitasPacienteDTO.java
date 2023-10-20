@@ -1,5 +1,6 @@
 package co.edu.uniquindio.proyectoFinal.DTO;
 
+import co.edu.uniquindio.proyectoFinal.modelo.Enumeraciones.EstadoCita;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.cglib.core.Local;
 
@@ -17,7 +18,7 @@ public record CitasPacienteDTO(
         @NotNull
         String medico,
         @NotNull
-        String estado,
+        EstadoCita estado,
         @NotNull
         String motivoCita
 ) {

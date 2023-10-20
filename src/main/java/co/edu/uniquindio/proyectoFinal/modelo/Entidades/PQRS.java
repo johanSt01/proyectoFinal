@@ -4,6 +4,7 @@ import co.edu.uniquindio.proyectoFinal.modelo.Enumeraciones.EstadoPQRS;
 import jakarta.persistence.*;
 import lombok.*;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -21,7 +22,7 @@ public class PQRS implements Serializable {
     private int codigo;
 
     @Column(updatable = true, nullable = false)
-    private Date fechaCreacion;
+    private LocalDate fechaCreacion;
 
     @Column(nullable = false, insertable = true, updatable = false)
     private String tipo, motivo;

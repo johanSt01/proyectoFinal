@@ -4,6 +4,8 @@ import co.edu.uniquindio.proyectoFinal.modelo.Enumeraciones.Especialidad;
 import co.edu.uniquindio.proyectoFinal.modelo.Enumeraciones.EstadoCita;
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.cglib.core.Local;
+
 import java.io.Serializable;
 import java.sql.Time;
 import java.time.LocalDate;
@@ -26,7 +28,7 @@ public class Cita implements Serializable {
     private int codigo;
 
     @Column(updatable = true, nullable = false)
-    private Date fechaCreacion;
+    private LocalDate fechaCreacion;
 
     @Column(updatable = true, nullable = false)
     private LocalDate fechaCita;

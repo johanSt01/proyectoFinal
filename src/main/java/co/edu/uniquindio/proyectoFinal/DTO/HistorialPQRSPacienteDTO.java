@@ -3,16 +3,16 @@ package co.edu.uniquindio.proyectoFinal.DTO;
 import co.edu.uniquindio.proyectoFinal.modelo.Enumeraciones.EstadoPQRS;
 import jakarta.validation.constraints.NotNull;
 
+import java.time.LocalDate;
+
 public record HistorialPQRSPacienteDTO(
         @NotNull
-        String numRadicado,
+        int numRadicado,
         @NotNull
-        String fechaCreacion,
+        LocalDate fechaCreacion,
         @NotNull
-        String citaAsociada,
+        int citaAsociada,
         @NotNull
-        EstadoPQRS estado,
-        @NotNull
-        String respuesta
+        EstadoPQRS estado
 ) {
 }

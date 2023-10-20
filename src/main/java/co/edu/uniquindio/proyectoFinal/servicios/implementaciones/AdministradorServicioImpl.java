@@ -18,12 +18,11 @@ import java.util.Optional;
 @RequiredArgsConstructor //crea el constructor de todos los metodos
 public class AdministradorServicioImpl implements AdministradorServicio {
 
-    //@Autowired //intancia del objeto
     private final MedicoRepository medicoRepo;
     private final PQRSRepository pqrsRepo;
     private final MensajeRepository mensajeRepo;
     private final CuentaRepository cuentaRepo;
-    private final CitaRepository citaRepo;
+    private final CitaRepository citaRepository;
 
     @Override
     public int crearMedico(MedicoDTO medicoDTO) throws Exception {
@@ -44,7 +43,7 @@ public class AdministradorServicioImpl implements AdministradorServicio {
 
     private static Medico datosMedico(MedicoDTO medicoDTO) {
         Medico medico = new Medico();
-        medico.setCedula(medicoDTO.cedula() );
+        medico.setCedula(medicoDTO.cedula());
         medico.setTelefono(medicoDTO.telefono());
         medico.setNombre(medicoDTO.nombre() );
         medico.setEspecialidad( medicoDTO.especialidad() );
@@ -242,7 +241,7 @@ public class AdministradorServicioImpl implements AdministradorServicio {
 
     @Override
     public List<CitaAdminDTO> listarCitas() throws Exception {
-        List<Cita> citas = citaRepo.findAll();
+        List<Cita> citas = citaRepository.findAll();
         List<CitaAdminDTO> respuesta = new ArrayList<>();
 
         if(citas.isEmpty()){

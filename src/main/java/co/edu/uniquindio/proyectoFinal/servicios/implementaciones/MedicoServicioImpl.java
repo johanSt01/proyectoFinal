@@ -145,7 +145,6 @@ public class MedicoServicioImpl implements MedicoServicio {
         cita.setHoraCita(hora);
 
         citaRepo.save(cita);
-        System.out.println("si se pudo posponer la cita");
     }
 
     @Override
