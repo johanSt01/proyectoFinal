@@ -23,7 +23,7 @@ public class Cuenta implements Serializable {
     @Column(nullable = false, updatable = true)
     private String correo;
 
-    @Column(nullable = false, updatable = true, length = 20)
+    @Column(nullable = false, updatable = true, length = 250)
     private String contrasenia;
 
     @OneToMany (mappedBy = "codigoCuenta")

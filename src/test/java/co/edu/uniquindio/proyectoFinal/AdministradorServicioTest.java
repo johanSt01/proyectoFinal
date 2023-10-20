@@ -22,15 +22,15 @@ public class AdministradorServicioTest {
     public void crearMedicoTest(){
 
         MedicoDTO medicoDTO = new MedicoDTO(
-                "389134",
+                "1234123",
                 "Lorena",
                 "76352145",
                 Ciudad.Cali,
                 Especialidad.Dermatologia,
                 LocalTime.of(7,0,0),
                 LocalTime.of(17,0,0),
-                "Lore@email.com",
-                "803jfiu9",
+                "123jak@email.com",
+                "1",
                 "url"
         );
         try {
