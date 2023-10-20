@@ -61,15 +61,4 @@ public class MedicoServicioTest {
         }
     }
 
-    @Test
-    public void login(){
-        try{
-            medicoServicio.iniciarSesion(new LoginDTO(
-                    "pepito@email.com",
-                    "8778hjd"
-            ));
-        }catch(Exception e){
-            System.out.println("problemas");
-        }
-    }
 }

@@ -16,6 +16,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
 @SpringBootTest
 public class PacienteServicioTest {
@@ -49,7 +50,7 @@ public class PacienteServicioTest {
     @Test
     public void eliminrPaciente(){
         try {
-            pacienteServicio.eliminarCuenta(18);
+            pacienteServicio.eliminarCuenta(16);
         }catch (Exception e){
             System.out.println("Error: "+ e.getMessage());
         }

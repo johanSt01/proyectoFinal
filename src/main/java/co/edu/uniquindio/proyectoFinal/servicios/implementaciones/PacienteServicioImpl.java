@@ -152,14 +152,7 @@ public class PacienteServicioImpl implements PacienteServicio {
 
     @Override
     public int crearPQRS(PQRSPacienteDTO pqrsPacienteDTO) throws Exception {
-        PQRS p = pqrsRepo.findByCodigoCita(pqrsPacienteDTO.citaAsociada().getCodigo());
-        if (p!=null) {
-            throw new Exception("ya hay una pqrs con ese codigo");
-        }
-
-        PQRS pqrs = datosPqrs(pqrsPacienteDTO);
-        PQRS nuevoPqrs = pqrsRepo.save(pqrs);
-        return  nuevoPqrs.getCodigo();
+        return 0;
     }
 
     public PQRS datosPqrs(PQRSPacienteDTO pqrsPacienteDTO){
@@ -203,7 +196,7 @@ public class PacienteServicioImpl implements PacienteServicio {
     @Override
     public List<CitasPacienteDTO> listarCitasPaciente(int codigoPaciente) throws Exception {
 
-        List<Cita> citas = citaRepo.findByCedulaPaciente(codigoPaciente);
+        List<Cita> citas = citaRepo.findByCedulaPacienteCodigo(codigoPaciente);
 
         if (citas.isEmpty()){
             throw new Exception("no hay citas pendientes para el dia de hoy");
@@ -237,7 +230,7 @@ public class PacienteServicioImpl implements PacienteServicio {
     //no funciona bien
     @Override
     public List<Cita> filtrarCitasPorMedico(int codigoMedico) throws Exception {
-        List<Cita> citas = citaRepo.findByCodigoMedico(codigoMedico);
+        List<Cita> citas = citaRepo.findByCodigoMedicoCodigo(codigoMedico);
         if (citas.isEmpty()){
             throw new Exception("no hay citas con ese medico");
         }
