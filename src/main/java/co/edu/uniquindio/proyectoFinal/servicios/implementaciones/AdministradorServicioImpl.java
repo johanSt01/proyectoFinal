@@ -7,6 +7,7 @@ import co.edu.uniquindio.proyectoFinal.modelo.Enumeraciones.EstadoUsuario;
 import co.edu.uniquindio.proyectoFinal.repositorios.*;
 import co.edu.uniquindio.proyectoFinal.servicios.Interfaces.AdministradorServicio;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -35,14 +36,6 @@ public class AdministradorServicioImpl implements AdministradorServicio {
             throw new Exception("El correo "+medicoDTO.cedula()+" ya está en uso");
         }
 
-        Medico medico = datosMedico(medicoDTO);
-
-        Medico medicoNuevo = medicoRepo.save(medico);
-
-        return medicoNuevo.getCodigo();
-    }
-
-    private static Medico datosMedico(MedicoDTO medicoDTO) {
         Medico medico = new Medico();
         medico.setCedula(medicoDTO.cedula() );
         medico.setTelefono(medicoDTO.telefono());
@@ -51,11 +44,19 @@ public class AdministradorServicioImpl implements AdministradorServicio {
         medico.setHoraInicio( medicoDTO.horaInicio());
         medico.setHoraFin( medicoDTO.horaFin());
         medico.setCiudad(medicoDTO.ciudad());
+
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String passwordEncriptada = passwordEncoder.encode( medicoDTO.contrasenia() );
+
         medico.setCorreo(medicoDTO.correo() );
-        medico.setContrasenia(medicoDTO.contrasenia());
+        medico.setContrasenia(passwordEncriptada);
+
         medico.setURLfoto(medicoDTO.URLfoto());
         medico.setEstadoUsuario(EstadoUsuario.Activo);
-        return medico;
+
+        Medico medicoNuevo = medicoRepo.save(medico);
+
+        return medicoNuevo.getCodigo();
     }
 
     private boolean estaRepetidoCorreo(String correo) {
