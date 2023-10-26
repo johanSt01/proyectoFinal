@@ -14,7 +14,6 @@ public interface MedicoServicio {
     List<HistorialCitasMedicoDTO> listarHistorialCitas()throws Exception;
     DiaLibre agendarDiaLibre(LocalDate diaSeleccionado, int codMedico) throws Exception;
     List<CitasHoyMedicoDTO> listarCitasRealizadas()throws Exception;
-    void posponerCita(int codigoCita, LocalDate fecha, LocalTime hora) throws Exception;
-    boolean iniciarSesion(LoginDTO loginDTO)throws Exception;
+    void posponerCita(PosponerCitaMedicoDTO posponerCitaMedicoDTO) throws Exception;
 
 }

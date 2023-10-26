@@ -64,13 +64,6 @@ public class MedicoServicioImpl implements MedicoServicio {
         return atencionRepo.save(atencion).getCodigo();
     }
 
-
-
-
-    private boolean existe(int codigo) {
-        return citaRepo.findByCodigo(codigo) != null;
-    }
-
     @Override
     public List<HistorialCitasMedicoDTO> listarHistorialCitas() throws Exception{
         List<Cita> citas = citaRepo.findAll();
@@ -130,31 +123,21 @@ public class MedicoServicioImpl implements MedicoServicio {
     }
 
     @Override
-    public void posponerCita(int codigoCita, LocalDate fecha, LocalTime hora) throws Exception {
+    public void posponerCita(PosponerCitaMedicoDTO posponerCitaMedicoDTO) throws Exception {
 
-        Cita cita = citaRepo.findByCodigo(codigoCita);
+        Cita cita = citaRepo.findByCodigo(posponerCitaMedicoDTO.codigoCita());
 
         if (cita==null){
             throw new Exception("No hay citas con este id");
         }
-        if (!citaRepo.findByCodigoMedicoCodigoAndFechaCitaAndHoraCita(cita.getCedulaPaciente().getCodigo(), fecha, hora).isEmpty()){
+        if (!citaRepo.findByCodigoMedicoCodigoAndFechaCitaAndHoraCita(cita.getCedulaPaciente().getCodigo(), posponerCitaMedicoDTO.fechaPropuesta(), posponerCitaMedicoDTO.horaPropuesta()).isEmpty()){
             throw new Exception("Ya tienes citas para este dia y a esa hora");
         }
 
-        cita.setFechaCita(fecha);
-        cita.setHoraCita(hora);
+        cita.setFechaCita(posponerCitaMedicoDTO.fechaPropuesta());
+        cita.setHoraCita(posponerCitaMedicoDTO.horaPropuesta());
 
         citaRepo.save(cita);
-    }
-
-    @Override
-    public boolean iniciarSesion(LoginDTO loginDTO) throws Exception {
-        Medico prueba = medicoRepository.findByCorreoAndContrasenia(loginDTO.correo(), loginDTO.contrasenia());
-        if(prueba==null){
-            throw new Exception("No hay un usuario medico registrado con ese correo y esa contraseña");
-        }
-
-        return true;//inicia sesion
     }
 
 }

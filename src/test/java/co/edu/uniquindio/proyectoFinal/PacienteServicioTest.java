@@ -26,18 +26,18 @@ public class PacienteServicioTest {
 
     @Test
     public void RegistrarPaciente(){
-        LocalDate fechaNacimiento = LocalDate.of(2000,2,15);
+        LocalDate fechaNacimiento = LocalDate.of(2001,2,15);
         RegistroUsuarioDTO usuarioDTO = new RegistroUsuarioDTO(
-                "juan",
-                "123456",
+                "juanmanuel",
+                "12345678",
                 fechaNacimiento,
-                "326578",
+                "3265568",
                 Ciudad.Pereira,
                 TipoSangre.ABpositivos,
                 EPS.NuevaEPS,
                 "no",
-                "juan@uqvirtual.edu.co",
-                "123456",
+                "juanma@uqvirtual.edu.co",
+                "12344456",
                 "URL"
         );
         try{

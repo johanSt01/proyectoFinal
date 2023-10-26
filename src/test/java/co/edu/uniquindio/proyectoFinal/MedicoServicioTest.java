@@ -1,6 +1,7 @@
 package co.edu.uniquindio.proyectoFinal;
 
 import co.edu.uniquindio.proyectoFinal.DTO.LoginDTO;
+import co.edu.uniquindio.proyectoFinal.DTO.PosponerCitaMedicoDTO;
 import co.edu.uniquindio.proyectoFinal.modelo.Entidades.Medico;
 import co.edu.uniquindio.proyectoFinal.servicios.Interfaces.MedicoServicio;
 import org.junit.jupiter.api.Test;
@@ -27,8 +28,15 @@ public class MedicoServicioTest {
 
     @Test
     public void posponerCitaTest(){
+        LocalDate fecha = LocalDate.of(2024, 1,1);
+        LocalTime hora= LocalTime.of(12,0,0);
         try {
-            medicoServicio.posponerCita(1, LocalDate.of(2023, 11, 20), LocalTime.of(9, 30, 0));
+            PosponerCitaMedicoDTO posponerCitaMedicoDTO = new PosponerCitaMedicoDTO(
+                    1,
+                    fecha,
+                    hora
+            );
+            medicoServicio.posponerCita(posponerCitaMedicoDTO);
         }catch (Exception e){
             System.out.println(e.getMessage());
         }

@@ -1,6 +1,8 @@
 package co.edu.uniquindio.proyectoFinal.servicios.Interfaces;
 
-public interface ImagenesServicio {
+import java.lang.reflect.Executable;
 
-    void mostrarImagen(String url) throws Exception;
+public interface ImagenesServicio {
+    void subirImagen(String url) throws Exception;
+    void eliminarMensaje(String url)throws Exception;
 }
