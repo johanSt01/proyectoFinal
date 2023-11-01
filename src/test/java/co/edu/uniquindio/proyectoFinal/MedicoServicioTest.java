@@ -63,7 +63,7 @@ public class MedicoServicioTest {
     @Test
     public void citasrealizadas(){
         try{
-            medicoServicio.listarCitasRealizadas();
+            medicoServicio.listarCitasHoy();
         }catch (Exception e){
             System.out.println(e.getMessage());
         }

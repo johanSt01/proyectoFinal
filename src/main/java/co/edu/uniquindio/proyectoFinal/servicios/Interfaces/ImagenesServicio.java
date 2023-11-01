@@ -4,5 +4,5 @@ import java.lang.reflect.Executable;
 
 public interface ImagenesServicio {
     void subirImagen(String url) throws Exception;
-    void eliminarMensaje(String url)throws Exception;
+    void eliminarImagen(String url)throws Exception;
 }

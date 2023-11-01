@@ -13,7 +13,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class ImagenesController {
 
-//    private final ImagenesServicio imagenesServicio;
+    private final ImagenesServicio imagenesServicio;
 //    @PostMapping("/subir")
 //    public ResponseEntity<MensajeDTO<Map>> subir(@RequestParam("file") MultipartFile imagen)
 //            throws Exception{

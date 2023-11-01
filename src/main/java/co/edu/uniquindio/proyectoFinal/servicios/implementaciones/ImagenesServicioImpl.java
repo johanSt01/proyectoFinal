@@ -25,7 +25,7 @@ public class ImagenesServicioImpl implements ImagenesServicio{
     }
 
     @Override
-    public void eliminarMensaje(String url) throws Exception {
+    public void eliminarImagen(String url) throws Exception {
         Usuario usuario = usuarioRep.findByURLfoto(url);
         if (usuario.getURLfoto().isEmpty()){
             throw new Exception("No hay ninguna imagen seleccionada");

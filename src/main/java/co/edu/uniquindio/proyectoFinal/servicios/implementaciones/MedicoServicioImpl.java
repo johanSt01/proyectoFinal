@@ -101,7 +101,7 @@ public class MedicoServicioImpl implements MedicoServicio {
     }
 
     @Override
-    public List<CitasHoyMedicoDTO> listarCitasRealizadas() throws Exception{
+    public List<CitasHoyMedicoDTO> listarCitasHoy() throws Exception{
 
         List<Cita> citas = citaRepo.findAll();
 

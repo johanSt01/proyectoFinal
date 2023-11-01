@@ -21,33 +21,36 @@ public class MedicoController {
     private final MedicoServicio medicoServicio;
 
     @GetMapping("/listarCitasPendientes")
-    public List<CitaMedicoDTO> listarCitasPendientes()throws Exception {
-        return medicoServicio.listarCitasPendientes();
+    public ResponseEntity<MensajeDTO<List<CitaMedicoDTO>>> listarCitasPendientes()throws Exception {
+        return ResponseEntity.ok().body( new MensajeDTO<>(false, medicoServicio.listarCitasPendientes()) );
     }
 
     @PutMapping("/atenderCita")
-    public int atenderCita(@Valid @RequestBody AtencionCitaMedicoDTO atencionCitaMedicoDTO) throws Exception{
-        return medicoServicio.atenderCita(atencionCitaMedicoDTO);
+    public ResponseEntity<MensajeDTO<String>> atenderCita(@Valid @RequestBody AtencionCitaMedicoDTO atencionCitaMedicoDTO) throws Exception{
+        medicoServicio.atenderCita(atencionCitaMedicoDTO);
+        return ResponseEntity.ok().body( new MensajeDTO<>(false, "La cita ha sido atendida correctamente" ));
     }
 
     @GetMapping("/listarHistorialCitas")
-    public List<HistorialCitasMedicoDTO> listarHistorialCitas()throws Exception {
-        return medicoServicio.listarHistorialCitas();
+    public ResponseEntity<MensajeDTO<List<HistorialCitasMedicoDTO>>> listarHistorialCitas() throws Exception {
+        return ResponseEntity.ok().body( new MensajeDTO<>(false, medicoServicio.listarHistorialCitas()));
     }
 
     @PostMapping("/agendarDiaLibre/{diaSeleccionado, codigoMedico}")
-    public DiaLibre agendarDiaLibre(@PathVariable LocalDate diaSeleccionado, int codigoMedico) throws Exception{
-        return medicoServicio.agendarDiaLibre(diaSeleccionado, codigoMedico);
+    public ResponseEntity<MensajeDTO<String>> agendarDiaLibre(@PathVariable LocalDate diaSeleccionado, int codigoMedico) throws Exception{
+        medicoServicio.agendarDiaLibre(diaSeleccionado, codigoMedico);
+        return ResponseEntity.ok().body( new MensajeDTO<>(false, "El dia libre ha sido agendado correctamente" ));
     }
 
-    @GetMapping("/listarCitasRealizadas")
-    public List<CitasHoyMedicoDTO> listarCitasRealizadas()throws Exception {
-        return medicoServicio.listarCitasRealizadas();
+    @GetMapping("/listarCitasHoy")
+    public ResponseEntity<MensajeDTO<List<CitasHoyMedicoDTO>>> listarCitasRealizadas()throws Exception {
+        return ResponseEntity.ok().body( new MensajeDTO<>(false, medicoServicio.listarCitasHoy()));
     }
 
-    @PutMapping("/posponerCita")
-    public void posponerCita(@Valid @RequestBody PosponerCitaMedicoDTO posponerCitaMedicoDTO) throws Exception{
+    @PostMapping("/posponerCita")
+    public ResponseEntity<MensajeDTO<String>> posponerCita(@Valid @RequestBody PosponerCitaMedicoDTO posponerCitaMedicoDTO) throws Exception{
         medicoServicio.posponerCita(posponerCitaMedicoDTO);
+        return ResponseEntity.ok().body( new MensajeDTO<>(false, "La fecha de la cita ha sido cambiada correctamente" ));
     }
 
 }
