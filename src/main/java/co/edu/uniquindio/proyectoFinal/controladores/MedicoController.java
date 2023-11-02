@@ -36,8 +36,8 @@ public class MedicoController {
         return ResponseEntity.ok().body( new MensajeDTO<>(false, medicoServicio.listarHistorialCitas()));
     }
 
-    @PostMapping("/agendarDiaLibre/{diaSeleccionado, codigoMedico}")
-    public ResponseEntity<MensajeDTO<String>> agendarDiaLibre(@PathVariable LocalDate diaSeleccionado, int codigoMedico) throws Exception{
+    @PostMapping("/agendarDiaLibre/{diaSeleccionado}/{codigoMedico}")
+    public ResponseEntity<MensajeDTO<String>> agendarDiaLibre(@PathVariable LocalDate diaSeleccionado, @PathVariable int codigoMedico) throws Exception{
         medicoServicio.agendarDiaLibre(diaSeleccionado, codigoMedico);
         return ResponseEntity.ok().body( new MensajeDTO<>(false, "El dia libre ha sido agendado correctamente" ));
     }
@@ -47,7 +47,7 @@ public class MedicoController {
         return ResponseEntity.ok().body( new MensajeDTO<>(false, medicoServicio.listarCitasHoy()));
     }
 
-    @PostMapping("/posponerCita")
+    @PutMapping("/posponerCita")
     public ResponseEntity<MensajeDTO<String>> posponerCita(@Valid @RequestBody PosponerCitaMedicoDTO posponerCitaMedicoDTO) throws Exception{
         medicoServicio.posponerCita(posponerCitaMedicoDTO);
         return ResponseEntity.ok().body( new MensajeDTO<>(false, "La fecha de la cita ha sido cambiada correctamente" ));
