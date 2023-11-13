@@ -5,20 +5,24 @@ import co.edu.uniquindio.proyectoFinal.modelo.Enumeraciones.Ciudad;
 import co.edu.uniquindio.proyectoFinal.modelo.Enumeraciones.Especialidad;
 import co.edu.uniquindio.proyectoFinal.modelo.Enumeraciones.EstadoPQRS;
 import co.edu.uniquindio.proyectoFinal.servicios.Interfaces.AdministradorServicio;
+import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.jdbc.Sql;
 
 import java.time.LocalTime;
 import java.util.List;
 
 @SpringBootTest
+@Transactional
 public class AdministradorServicioTest {
 
     @Autowired
     private AdministradorServicio administradorServicio;
 
     @Test
+    @Sql("classpath:dataset.sql")
     public void crearMedicoTest(){
 
         MedicoDTO medicoDTO = new MedicoDTO(
@@ -41,6 +45,7 @@ public class AdministradorServicioTest {
     }
 
     @Test
+    @Sql("classpath:dataset.sql")
     public void actualizarMedicoTest(){
         try {
             DetalleMedicoAdminDTO medicoDTO = administradorServicio.obtenerMedico(1);
@@ -67,6 +72,7 @@ public class AdministradorServicioTest {
     }
 
     @Test
+    @Sql("classpath:dataset.sql")
     public void eliminarMedicoTest(){
         try {
             administradorServicio.eliminarMedico(1);
@@ -76,6 +82,7 @@ public class AdministradorServicioTest {
     }
 
     @Test
+    @Sql("classpath:dataset.sql")
     public void listarMedicoTest(){
         try {
             List<InforMedicoAdminDTO> lista = administradorServicio.listarMedico();
@@ -86,6 +93,7 @@ public class AdministradorServicioTest {
     }
 
     @Test
+    @Sql("classpath:dataset.sql")
     public void listarPQRSTest(){
         try {
             List<PQRSAdminDTO> lista = administradorServicio.listarPQRS();
@@ -105,6 +113,7 @@ public class AdministradorServicioTest {
     }
 
     @Test
+    @Sql("classpath:dataset.sql")
     public void DetallePQRSAdminDTOTest(){
         try {
             DetallePQRSAdminDTO detallePQRSAdminDTO = administradorServicio.verDetallePQRS(1);
@@ -122,6 +131,7 @@ public class AdministradorServicioTest {
     }
 
     @Test
+    @Sql("classpath:dataset.sql")
     public void cambiarEstadoPQRSTest(){
         try {
             administradorServicio.cambiarEstadoPQRS(1, EstadoPQRS.terminado);
@@ -131,6 +141,7 @@ public class AdministradorServicioTest {
     }
 
     @Test
+    @Sql("classpath:dataset.sql")
     public void listarCitasTest(){
         try {
             List<CitaAdminDTO> lista = administradorServicio.listarCitas();

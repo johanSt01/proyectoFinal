@@ -10,21 +10,25 @@ import co.edu.uniquindio.proyectoFinal.modelo.Enumeraciones.Especialidad;
 import co.edu.uniquindio.proyectoFinal.modelo.Enumeraciones.TipoSangre;
 import co.edu.uniquindio.proyectoFinal.servicios.Interfaces.PacienteServicio;
 import com.sun.jdi.event.ExceptionEvent;
+import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.jdbc.Sql;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 
 @SpringBootTest
+@Transactional
 public class PacienteServicioTest {
 
     @Autowired
     private PacienteServicio pacienteServicio;
 
     @Test
+    @Sql("classpath:dataset.sql")
     public void RegistrarPaciente(){
         LocalDate fechaNacimiento = LocalDate.of(2001,2,15);
         RegistroUsuarioDTO usuarioDTO = new RegistroUsuarioDTO(
@@ -48,6 +52,7 @@ public class PacienteServicioTest {
     }
 
     @Test
+    @Sql("classpath:dataset.sql")
     public void eliminrPaciente(){
         try {
             pacienteServicio.eliminarCuenta(16);
@@ -57,6 +62,7 @@ public class PacienteServicioTest {
     }
 
     @Test
+    @Sql("classpath:dataset.sql")
     public void listarcitasFecha(){
         try{
             LocalDate fecha = LocalDate.of(2023,10,19);
@@ -67,6 +73,7 @@ public class PacienteServicioTest {
     }
 
     @Test
+    @Sql("classpath:dataset.sql")
     public void listarCitasMedico(){
         try {
             pacienteServicio.filtrarCitasPorMedico(2);
@@ -76,6 +83,7 @@ public class PacienteServicioTest {
     }
 
     @Test
+    @Sql("classpath:dataset.sql")
     public void detalleCita(){
         try{
             pacienteServicio.verDetalleCita(1);

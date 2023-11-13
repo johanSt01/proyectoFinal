@@ -4,13 +4,11 @@ INSERT INTO Cuenta (codigo, contrasenia, correo) VALUES (3, '804929hf', 'Andres@
 INSERT INTO Cuenta (codigo, contrasenia, correo) VALUES (4, '80345r2f', 'Manu@email.com');
 INSERT INTO Cuenta (codigo, contrasenia, correo) VALUES (5, '803jfiu9', 'Lore@email.com');
 
-
 INSERT INTO Cuenta (codigo, contrasenia, correo) VALUES (6, 'clave123', 'asparkesa@desdev.cn');
 INSERT INTO Cuenta (codigo, contrasenia, correo) VALUES (7, 'secreto789', 'ymattiussig@ihg.com');
 INSERT INTO Cuenta (codigo, contrasenia, correo) VALUES (8, '97439819', 'phailsm@usgs.gov');
 INSERT INTO Cuenta (codigo, contrasenia, correo) VALUES (9, 'c83u92nm', 'tbovey5@imdb.com');
 INSERT INTO Cuenta (codigo, contrasenia, correo) VALUES (10, '0198u4lka', 'phailsm@usgs.gov');
-
 
 INSERT INTO Cuenta (codigo, contrasenia, correo) VALUES (11, '624tsa', 'ccordsp@quantcast.com');
 INSERT INTO Cuenta (codigo, contrasenia, correo) VALUES (12, 'adfh8212', 'mcroallq@blinklist.com');

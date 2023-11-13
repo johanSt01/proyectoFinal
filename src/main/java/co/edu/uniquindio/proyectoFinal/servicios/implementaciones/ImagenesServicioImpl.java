@@ -13,24 +13,24 @@ public class ImagenesServicioImpl implements ImagenesServicio{
     private final UsuarioRepository usuarioRep;
     @Override
     public void subirImagen(String url) throws Exception {
-        Usuario usuario = usuarioRep.findByURLfoto(url);
+      /*  Usuario usuario = usuarioRep.findByURLfoto(url);
         if (usuario!=null){
             throw new Exception("el usuario ya tiene una foto");
-        }
-        if (usuario.getURLfoto().isEmpty()){
+        }*/
+     /*   if (usuario.getURLfoto().isEmpty()){
             throw new Exception("No hay ninguna imagen seleccionada");
-        }
+        }*/
 
-        usuario.setURLfoto(url);
+      //  usuario.setURLfoto(url);
     }
 
     @Override
     public void eliminarImagen(String url) throws Exception {
-        Usuario usuario = usuarioRep.findByURLfoto(url);
+        /*Usuario usuario = usuarioRep.findByURLfoto(url);
         if (usuario.getURLfoto().isEmpty()){
             throw new Exception("No hay ninguna imagen seleccionada");
         }
 
-        usuario.setURLfoto("");
+        usuario.setURLfoto("");*/
     }
 }
