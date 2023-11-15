@@ -24,7 +24,7 @@ public class PacienteController {
     @PostMapping("/registrarse")
     public ResponseEntity<MensajeDTO<String>> Registrarse(@Valid @RequestBody RegistroUsuarioDTO registroUsuarioDTO) throws Exception {
         pacienteServicio.registrarse(registroUsuarioDTO);
-        return ResponseEntity.ok().body(new MensajeDTO<>(false, "El usuario se ha paciente correctamente"));
+        return ResponseEntity.ok().body(new MensajeDTO<>(false, "Paciente registrado correctamente"));
     }
 
     @PutMapping("/editarPerfil")

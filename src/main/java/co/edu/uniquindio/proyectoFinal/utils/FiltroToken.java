@@ -50,9 +50,7 @@ public class FiltroToken implements Filter{
                         error = false;
                     }
                 }else{
-                    crearRespuestaError("No hay un Token", HttpServletResponse.SC_FORBIDDEN,
-
-                            res);
+                    crearRespuestaError("No hay un Token", HttpServletResponse.SC_FORBIDDEN, res);
 
                 }
             }else{
