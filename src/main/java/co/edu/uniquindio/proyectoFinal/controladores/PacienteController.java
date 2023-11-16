@@ -16,7 +16,7 @@ import java.util.List;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping("/api/pacienteController")
+@RequestMapping("/api/pacientes")
 public class PacienteController {
 
     private final PacienteServicioImpl pacienteServicio;

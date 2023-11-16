@@ -26,9 +26,4 @@ public class EmailServicioImp implements EmailServicio {
 
         javaMailSender.send(mensaje);
     }
-
-    @Override
-    public void emviarMensaje(String mensaje) {
-
-    }
 }

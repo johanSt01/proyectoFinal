@@ -18,9 +18,9 @@ public class EmailServicioTest {
     public void enviarEmailTest(){
 
         EmailDTO emailDTO = new EmailDTO(
-                "Test de verificacion",
-                "Este es un correo de verificación de uso de email en la aplicación",
-                "correo"
+                "Test",
+                "",
+                ""
         );
         try {
             emailServicio.enviarEmail(emailDTO);

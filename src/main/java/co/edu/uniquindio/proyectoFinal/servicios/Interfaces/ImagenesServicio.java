@@ -1,8 +1,10 @@
 package co.edu.uniquindio.proyectoFinal.servicios.Interfaces;
 
-import java.lang.reflect.Executable;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.util.Map;
 
 public interface ImagenesServicio {
-    void subirImagen(String url) throws Exception;
-    void eliminarImagen(String url)throws Exception;
+    Map subirImagen(MultipartFile imagen) throws Exception;
+    Map eliminarImagen(String idImagen)throws Exception;
 }
