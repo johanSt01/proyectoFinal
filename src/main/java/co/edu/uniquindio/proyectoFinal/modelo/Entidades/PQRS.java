@@ -27,9 +27,6 @@ public class PQRS implements Serializable {
     @Column(nullable = false, insertable = true, updatable = false)
     private String tipo, motivo;
 
-    @OneToMany (mappedBy = "codigoPqrs")
-    private List<Mensaje> mensaje;
-
     private EstadoPQRS estado;
 
     @ManyToOne

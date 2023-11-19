@@ -1,7 +1,9 @@
 package co.edu.uniquindio.proyectoFinal;
 
 import co.edu.uniquindio.proyectoFinal.DTO.AgendarCitaPacienteDTO;
+import co.edu.uniquindio.proyectoFinal.DTO.PQRSPacienteDTO;
 import co.edu.uniquindio.proyectoFinal.DTO.RegistroUsuarioDTO;
+import co.edu.uniquindio.proyectoFinal.modelo.Entidades.Cita;
 import co.edu.uniquindio.proyectoFinal.modelo.Entidades.Medico;
 import co.edu.uniquindio.proyectoFinal.modelo.Entidades.Paciente;
 import co.edu.uniquindio.proyectoFinal.modelo.Enumeraciones.Ciudad;
@@ -26,6 +28,22 @@ public class PacienteServicioTest {
 
     @Autowired
     private PacienteServicio pacienteServicio;
+
+
+    @Test
+    public void crearPQRS(){
+        Cita cita = null;
+        PQRSPacienteDTO nuevoPQRS = new PQRSPacienteDTO(
+                cita,
+                "",
+                ""
+        );
+        try{
+            pacienteServicio.crearPQRS(nuevoPQRS);
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
 
     @Test
     @Sql("classpath:dataset.sql")

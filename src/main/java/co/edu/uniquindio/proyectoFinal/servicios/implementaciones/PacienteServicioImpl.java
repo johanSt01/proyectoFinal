@@ -5,6 +5,7 @@ import co.edu.uniquindio.proyectoFinal.modelo.Entidades.Cita;
 import co.edu.uniquindio.proyectoFinal.modelo.Entidades.Medico;
 import co.edu.uniquindio.proyectoFinal.modelo.Entidades.PQRS;
 import co.edu.uniquindio.proyectoFinal.modelo.Entidades.Paciente;
+import co.edu.uniquindio.proyectoFinal.modelo.Enumeraciones.EstadoPQRS;
 import co.edu.uniquindio.proyectoFinal.modelo.Enumeraciones.EstadoUsuario;
 import co.edu.uniquindio.proyectoFinal.repositorios.CitaRepository;
 import co.edu.uniquindio.proyectoFinal.repositorios.PQRSRepository;
@@ -54,6 +55,9 @@ public class PacienteServicioImpl implements PacienteServicio {
         paciente.setTelefono(registroUsuarioDTO.telefono());
         paciente.setNombre(registroUsuarioDTO.nombre());
         paciente.setCiudad(registroUsuarioDTO.ciudad());
+        paciente.setAlergias(registroUsuarioDTO.alergias());
+        paciente.setCodigo_tipo_sangre(registroUsuarioDTO.tipoSangre());
+        paciente.setCodigo_eps(registroUsuarioDTO.eps());
         paciente.setCorreo(registroUsuarioDTO.email());
 
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
@@ -158,7 +162,21 @@ public class PacienteServicioImpl implements PacienteServicio {
 
     @Override
     public int crearPQRS(PQRSPacienteDTO pqrsPacienteDTO) throws Exception {
-        return 0;
+        Cita cita = citaRepo.findByCodigo(pqrsPacienteDTO.citaAsociada().getCodigo());
+
+        if(cita==null){
+            throw new Exception("No existe la cita");
+        }
+
+        PQRS pqrs = new PQRS();
+        pqrs.setFechaCreacion(LocalDate.now());
+        pqrs.setTipo(pqrsPacienteDTO.tipoPQRS());
+        pqrs.setMotivo(pqrsPacienteDTO.detalle());
+        pqrs.setEstado(EstadoPQRS.enviado);
+        pqrs.setCodigoCita(cita);
+
+        PQRS pqrsCreada = pqrsRepo.save(pqrs);
+        return pqrsCreada.getCodigo();
     }
 
     public PQRS datosPqrs(PQRSPacienteDTO pqrsPacienteDTO){
