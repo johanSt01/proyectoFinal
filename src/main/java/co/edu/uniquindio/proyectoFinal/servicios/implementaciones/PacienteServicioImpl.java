@@ -36,7 +36,7 @@ public class PacienteServicioImpl implements PacienteServicio {
         }
 
         if (estaRepetidoEmail(registroUsuarioDTO.email())) {
-            throw new Exception("El correo " + registroUsuarioDTO.cedula() + " ya está en uso");
+            throw new Exception("El correo " + registroUsuarioDTO.email() + " ya está en uso");
         }
 
         Paciente paciente = crearPaciente(registroUsuarioDTO);
@@ -67,11 +67,12 @@ public class PacienteServicioImpl implements PacienteServicio {
     }
 
     private boolean estaRepetidocedula(String cedula) {
+
         return pacienteRepo.findByCedula(cedula) != null;
     }
 
     private boolean estaRepetidoEmail(String correo) {
-        return pacienteRepo.findByCedula(correo) != null;
+        return pacienteRepo.findByCorreo(correo) != null;
     }
 
     @Override
