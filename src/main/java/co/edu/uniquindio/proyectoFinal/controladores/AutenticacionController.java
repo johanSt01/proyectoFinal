@@ -23,6 +23,7 @@ public class AutenticacionController {
     private final AutenticacionServicio autenticacionServicio;
     private final PacienteServicioImpl pacienteServicio;
 
+
     @PostMapping("/login")
     public ResponseEntity<MensajeDTO<TokenDTO>> login(@Valid @RequestBody LoginDTO loginDTO)
             throws Exception {
@@ -31,7 +32,8 @@ public class AutenticacionController {
     }
 
     @PostMapping("/registrarse")
-    public ResponseEntity<MensajeDTO<String>> Registrarse(@Valid @RequestBody RegistroUsuarioDTO registroUsuarioDTO) throws Exception {
+    public ResponseEntity<MensajeDTO<String>> registrarse(@Valid @RequestBody RegistroUsuarioDTO registroUsuarioDTO)
+            throws Exception {
         pacienteServicio.registrarse(registroUsuarioDTO);
         return ResponseEntity.ok().body(new MensajeDTO<>(false, "Paciente registrado correctamente"));
     }
