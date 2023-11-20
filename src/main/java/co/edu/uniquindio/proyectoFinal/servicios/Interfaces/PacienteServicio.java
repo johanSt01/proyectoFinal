@@ -3,6 +3,7 @@ package co.edu.uniquindio.proyectoFinal.servicios.Interfaces;
 import co.edu.uniquindio.proyectoFinal.DTO.*;
 import co.edu.uniquindio.proyectoFinal.modelo.Entidades.Cita;
 import co.edu.uniquindio.proyectoFinal.modelo.Entidades.Paciente;
+import co.edu.uniquindio.proyectoFinal.modelo.Enumeraciones.Especialidad;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -36,4 +37,8 @@ public interface PacienteServicio {
     DetalleCitaPacienteDTO verDetalleCita(int codigoCita)throws Exception;
 
     void posponerCita(int codigoCita, LocalDate fecha, LocalTime hora) throws Exception;
+
+    DetallePacienteDTO detallePaciente(int codigo)throws Exception;
+
+    List<MedicoEspecialidadDTO> obtenerMedicosEspecialidad(Especialidad especialidad) throws Exception;
 }

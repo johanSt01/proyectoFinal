@@ -1,20 +1,20 @@
-INSERT INTO Cuenta (codigo, contrasenia, correo) VALUES (1, '884928fa', 'juan@email.com');
-INSERT INTO Cuenta (codigo, contrasenia, correo) VALUES (2, '8452df4', 'sebas@email.com');
-INSERT INTO Cuenta (codigo, contrasenia, correo) VALUES (3, '804929hf', 'Andres@email.com');
-INSERT INTO Cuenta (codigo, contrasenia, correo) VALUES (4, '80345r2f', 'Manu@email.com');
-INSERT INTO Cuenta (codigo, contrasenia, correo) VALUES (5, '803jfiu9', 'Lore@email.com');
+INSERT INTO Cuenta (codigo, contrasenia, correo) VALUES (1, '$2a$10$04AuaU02xXV3PyC00yJLWeqsFYkb5P.Z.v1RceboFnk1hEQZFuqNa', 'juan@email.com');
+INSERT INTO Cuenta (codigo, contrasenia, correo) VALUES (2, '$2a$10$04AuaU02xXV3PyC00yJLWeqsFYkb5P.Z.v1RceboFnk1hEQZFuqNa', 'sebas@email.com');
+INSERT INTO Cuenta (codigo, contrasenia, correo) VALUES (3, '$2a$10$04AuaU02xXV3PyC00yJLWeqsFYkb5P.Z.v1RceboFnk1hEQZFuqNa', 'Andres@email.com');
+INSERT INTO Cuenta (codigo, contrasenia, correo) VALUES (4, '$2a$10$04AuaU02xXV3PyC00yJLWeqsFYkb5P.Z.v1RceboFnk1hEQZFuqNa', 'Manu@email.com');
+INSERT INTO Cuenta (codigo, contrasenia, correo) VALUES (5, '$2a$10$04AuaU02xXV3PyC00yJLWeqsFYkb5P.Z.v1RceboFnk1hEQZFuqNa', 'Lore@email.com');
 
-INSERT INTO Cuenta (codigo, contrasenia, correo) VALUES (6, 'clave123', 'asparkesa@desdev.cn');
-INSERT INTO Cuenta (codigo, contrasenia, correo) VALUES (7, 'secreto789', 'ymattiussig@ihg.com');
-INSERT INTO Cuenta (codigo, contrasenia, correo) VALUES (8, '97439819', 'phailsm@usgs.gov');
-INSERT INTO Cuenta (codigo, contrasenia, correo) VALUES (9, 'c83u92nm', 'tbovey5@imdb.com');
-INSERT INTO Cuenta (codigo, contrasenia, correo) VALUES (10, '0198u4lka', 'phailsm@usgs.gov');
+INSERT INTO Cuenta (codigo, contrasenia, correo) VALUES (6, '$2a$10$04AuaU02xXV3PyC00yJLWeqsFYkb5P.Z.v1RceboFnk1hEQZFuqNa', 'asparkesa@desdev.cn');
+INSERT INTO Cuenta (codigo, contrasenia, correo) VALUES (7, '$2a$10$04AuaU02xXV3PyC00yJLWeqsFYkb5P.Z.v1RceboFnk1hEQZFuqNa', 'ymattiussig@ihg.com');
+INSERT INTO Cuenta (codigo, contrasenia, correo) VALUES (8, '$2a$10$04AuaU02xXV3PyC00yJLWeqsFYkb5P.Z.v1RceboFnk1hEQZFuqNa', 'phailsm@usgs.gov');
+INSERT INTO Cuenta (codigo, contrasenia, correo) VALUES (9, '$2a$10$04AuaU02xXV3PyC00yJLWeqsFYkb5P.Z.v1RceboFnk1hEQZFuqNa', 'tbovey5@imdb.com');
+INSERT INTO Cuenta (codigo, contrasenia, correo) VALUES (10, '$2a$10$04AuaU02xXV3PyC00yJLWeqsFYkb5P.Z.v1RceboFnk1hEQZFuqNa', 'phailsm@usgs.gov');
 
-INSERT INTO Cuenta (codigo, contrasenia, correo) VALUES (11, '624tsa', 'ccordsp@quantcast.com');
-INSERT INTO Cuenta (codigo, contrasenia, correo) VALUES (12, 'adfh8212', 'mcroallq@blinklist.com');
-INSERT INTO Cuenta (codigo, contrasenia, correo) VALUES (13, 'dfajh9823', 'wjimer@furl.net');
-INSERT INTO Cuenta (codigo, contrasenia, correo) VALUES (14, '50989i1lkd', 'dshewsmiths@spotify.com');
-INSERT INTO Cuenta (codigo, contrasenia, correo) VALUES (15, '13498aag', 'aperringtont@indiegogo.com');
+INSERT INTO Cuenta (codigo, contrasenia, correo) VALUES (11, '$2a$10$04AuaU02xXV3PyC00yJLWeqsFYkb5P.Z.v1RceboFnk1hEQZFuqNa', 'ccordsp@quantcast.com');
+INSERT INTO Cuenta (codigo, contrasenia, correo) VALUES (12, '$2a$10$04AuaU02xXV3PyC00yJLWeqsFYkb5P.Z.v1RceboFnk1hEQZFuqNa', 'mcroallq@blinklist.com');
+INSERT INTO Cuenta (codigo, contrasenia, correo) VALUES (13, '$2a$10$04AuaU02xXV3PyC00yJLWeqsFYkb5P.Z.v1RceboFnk1hEQZFuqNa', 'wjimer@furl.net');
+INSERT INTO Cuenta (codigo, contrasenia, correo) VALUES (14, '$2a$10$04AuaU02xXV3PyC00yJLWeqsFYkb5P.Z.v1RceboFnk1hEQZFuqNa', 'dshewsmiths@spotify.com');
+INSERT INTO Cuenta (codigo, contrasenia, correo) VALUES (15, '$2a$10$04AuaU02xXV3PyC00yJLWeqsFYkb5P.Z.v1RceboFnk1hEQZFuqNa', 'aperringtont@indiegogo.com');
 
 
 INSERT INTO Administrador (codigo) VALUES (6);

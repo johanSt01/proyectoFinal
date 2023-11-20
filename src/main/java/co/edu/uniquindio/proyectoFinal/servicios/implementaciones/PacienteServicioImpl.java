@@ -5,9 +5,11 @@ import co.edu.uniquindio.proyectoFinal.modelo.Entidades.Cita;
 import co.edu.uniquindio.proyectoFinal.modelo.Entidades.Medico;
 import co.edu.uniquindio.proyectoFinal.modelo.Entidades.PQRS;
 import co.edu.uniquindio.proyectoFinal.modelo.Entidades.Paciente;
+import co.edu.uniquindio.proyectoFinal.modelo.Enumeraciones.Especialidad;
 import co.edu.uniquindio.proyectoFinal.modelo.Enumeraciones.EstadoPQRS;
 import co.edu.uniquindio.proyectoFinal.modelo.Enumeraciones.EstadoUsuario;
 import co.edu.uniquindio.proyectoFinal.repositorios.CitaRepository;
+import co.edu.uniquindio.proyectoFinal.repositorios.MedicoRepository;
 import co.edu.uniquindio.proyectoFinal.repositorios.PQRSRepository;
 import co.edu.uniquindio.proyectoFinal.repositorios.PacienteRepository;
 import co.edu.uniquindio.proyectoFinal.servicios.Interfaces.PacienteServicio;
@@ -29,6 +31,7 @@ public class PacienteServicioImpl implements PacienteServicio {
     private final CitaRepository citaRepo;
     private final PacienteRepository pacienteRepo;
     private final PQRSRepository pqrsRepo;
+    private final MedicoRepository medicoRepo;
 
     @Override
     public int registrarse(RegistroUsuarioDTO registroUsuarioDTO) throws Exception {
@@ -93,6 +96,30 @@ public class PacienteServicioImpl implements PacienteServicio {
         pacienteRepo.save( buscado );
 
         return buscado.getCodigo();
+    }
+
+    @Override
+    public DetallePacienteDTO detallePaciente(int codigo) throws Exception {
+
+        Optional<Paciente> opcional = pacienteRepo.findById(codigo);
+
+        if(opcional.isEmpty()){
+            throw new Exception(" No existe un paciente con el código" + codigo);
+        }
+
+        Paciente buscado = opcional.get();
+
+        return new DetallePacienteDTO(
+                buscado.getCodigo(),
+                buscado.getNombre(),
+                buscado.getCedula(),
+                buscado.getFechaNacimiento(),
+                buscado.getTelefono(),
+                buscado.getCiudad(),
+                buscado.getCodigo_tipo_sangre(),
+                buscado.getCodigo_eps(),
+                buscado.getAlergias(),
+                buscado.getCorreo());
     }
 
     public Paciente actualizarPerfil(DetallePacienteDTO detallePacienteDTO){
@@ -291,5 +318,15 @@ public class PacienteServicioImpl implements PacienteServicio {
         cita.setHoraCita(hora);
 
         citaRepo.save(cita);
+    }
+
+    @Override
+    public List<MedicoEspecialidadDTO> obtenerMedicosEspecialidad(Especialidad especialidad)throws  Exception{
+        List<MedicoEspecialidadDTO> medicosEspecialidad = medicoRepo.findMedicoByEspecialidad(especialidad);
+        if (medicosEspecialidad.isEmpty()){
+            throw new Exception("no hay medicos con esa especialdad");
+        }
+
+        return medicosEspecialidad;
     }
 }

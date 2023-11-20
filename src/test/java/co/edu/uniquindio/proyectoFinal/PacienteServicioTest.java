@@ -29,7 +29,14 @@ public class PacienteServicioTest {
     @Autowired
     private PacienteServicio pacienteServicio;
 
-
+@Test
+public void listarMedicosEspecualidad(){
+    try{
+        pacienteServicio.obtenerMedicosEspecialidad(Especialidad.Odontologia);
+    } catch (Exception e) {
+        System.out.println(e.getMessage());
+    }
+}
     @Test
     public void crearPQRS(){
         Cita cita = null;

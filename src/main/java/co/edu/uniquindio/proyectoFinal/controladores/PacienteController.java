@@ -2,6 +2,7 @@ package co.edu.uniquindio.proyectoFinal.controladores;
 
 import co.edu.uniquindio.proyectoFinal.DTO.*;
 import co.edu.uniquindio.proyectoFinal.modelo.Entidades.Cita;
+import co.edu.uniquindio.proyectoFinal.modelo.Enumeraciones.Especialidad;
 import co.edu.uniquindio.proyectoFinal.servicios.Interfaces.PacienteServicio;
 import co.edu.uniquindio.proyectoFinal.servicios.implementaciones.PacienteServicioImpl;
 import jakarta.validation.Valid;
@@ -21,12 +22,21 @@ public class PacienteController {
 
     private final PacienteServicioImpl pacienteServicio;
 
-    @PutMapping("/editarPerfil")
-    public ResponseEntity<MensajeDTO<String>> EditarPerfil(@Valid @RequestBody DetallePacienteDTO detallePacienteDTO) throws Exception {
+    @PostMapping("/editarPerfil")
+    public ResponseEntity<MensajeDTO<String>> EditarPerfil(@Valid @RequestBody DetallePacienteDTO detallePacienteDTO, @Valid @RequestBody int cod) throws Exception {
         pacienteServicio.editarPerfil(detallePacienteDTO);
         return ResponseEntity.ok().body(new MensajeDTO<>(false, "el perfil se ha editado correctamente"));
     }
 
+    @GetMapping("/detallePaciente/{codigo}")
+    public ResponseEntity<MensajeDTO<DetallePacienteDTO>> detallePaciente(@PathVariable int codigo) throws Exception {
+        return ResponseEntity.ok().body( new MensajeDTO<>(false, pacienteServicio.detallePaciente(codigo)));
+    }
+
+    @GetMapping("/obtenerMedicosEspecialidad/{codigo}")
+    public ResponseEntity<MensajeDTO<List<MedicoEspecialidadDTO>>> obtenerMedicosEspecialidad(@PathVariable Especialidad especialidad) throws Exception {
+        return ResponseEntity.ok().body( new MensajeDTO<>(false, pacienteServicio.obtenerMedicosEspecialidad(especialidad)));
+    }
     @DeleteMapping("/eliminarPerfil/{codigoCuenta}")
     public ResponseEntity<MensajeDTO<String>> eliminarPerfil(@PathVariable int codigoCuenta) throws Exception{
         pacienteServicio.eliminarCuenta(codigoCuenta);
