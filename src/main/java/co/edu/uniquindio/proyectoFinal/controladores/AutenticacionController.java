@@ -23,7 +23,6 @@ public class AutenticacionController {
     private final AutenticacionServicio autenticacionServicio;
     private final PacienteServicioImpl pacienteServicio;
 
-
     @PostMapping("/login")
     public ResponseEntity<MensajeDTO<TokenDTO>> login(@Valid @RequestBody LoginDTO loginDTO)
             throws Exception {

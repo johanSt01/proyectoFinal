@@ -113,6 +113,30 @@ public class PacienteServicioImpl implements PacienteServicio {
     }
 
     @Override
+    public DetallePacienteDTO detallePaciente(int codigo) throws Exception {
+
+        Optional<Paciente> opcional = pacienteRepo.findById(codigo);
+
+        if(opcional.isEmpty()){
+            throw new Exception(" No existe un paciente con el código" + codigo);
+        }
+
+        Paciente buscado = opcional.get();
+
+        return new DetallePacienteDTO(
+                buscado.getCodigo(),
+                buscado.getNombre(),
+                buscado.getCedula(),
+                buscado.getFechaNacimiento(),
+                buscado.getTelefono(),
+                buscado.getCiudad(),
+                buscado.getCodigo_tipo_sangre(),
+                buscado.getCodigo_eps(),
+                buscado.getAlergias(),
+                buscado.getCorreo());
+    }
+
+    @Override
     public void eliminarCuenta(int codigoCuenta) throws Exception {
         Optional<Paciente> opcional = pacienteRepo.findById(codigoCuenta);
 

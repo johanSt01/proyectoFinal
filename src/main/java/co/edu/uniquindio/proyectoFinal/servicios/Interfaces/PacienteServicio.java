@@ -13,6 +13,8 @@ public interface PacienteServicio {
 
     int editarPerfil(DetallePacienteDTO paciente)throws Exception;
 
+    DetallePacienteDTO detallePaciente(int codigo)throws Exception;
+
     void eliminarCuenta(int codigoCuenta)throws Exception;
 
     String enviarLinkRecuperacion(EnviarCorreoPacienteDTO correoPacienteDTO)throws Exception;

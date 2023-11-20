@@ -27,6 +27,11 @@ public class PacienteController {
         return ResponseEntity.ok().body(new MensajeDTO<>(false, "el perfil se ha editado correctamente"));
     }
 
+    @GetMapping("/detallePaciente/{codigo}")
+    public ResponseEntity<MensajeDTO<DetallePacienteDTO>> VerDetallePaciente(@PathVariable int codigo) throws Exception {
+        return ResponseEntity.ok().body( new MensajeDTO<>(false, pacienteServicio.detallePaciente(codigo)));
+    }
+
     @DeleteMapping("/eliminarPerfil/{codigoCuenta}")
     public ResponseEntity<MensajeDTO<String>> eliminarPerfil(@PathVariable int codigoCuenta) throws Exception{
         pacienteServicio.eliminarCuenta(codigoCuenta);
