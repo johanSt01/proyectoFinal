@@ -138,7 +138,6 @@ public class PacienteServicioImpl implements PacienteServicio {
 
         return paciente;
     }
-
     @Override
     public void eliminarCuenta(int codigoCuenta) throws Exception {
         Optional<Paciente> opcional = pacienteRepo.findById(codigoCuenta);

@@ -28,15 +28,17 @@ public class PacienteController {
         return ResponseEntity.ok().body(new MensajeDTO<>(false, "el perfil se ha editado correctamente"));
     }
 
-    @GetMapping("/detallePaciente/{codigo}")
-    public ResponseEntity<MensajeDTO<DetallePacienteDTO>> detallePaciente(@PathVariable int codigo) throws Exception {
-        return ResponseEntity.ok().body( new MensajeDTO<>(false, pacienteServicio.detallePaciente(codigo)));
-    }
 
     @GetMapping("/obtenerMedicosEspecialidad/{codigo}")
     public ResponseEntity<MensajeDTO<List<MedicoEspecialidadDTO>>> obtenerMedicosEspecialidad(@PathVariable Especialidad especialidad) throws Exception {
-        return ResponseEntity.ok().body( new MensajeDTO<>(false, pacienteServicio.obtenerMedicosEspecialidad(especialidad)));
+        return ResponseEntity.ok().body(new MensajeDTO<>(false, pacienteServicio.obtenerMedicosEspecialidad(especialidad)));
     }
+
+    @GetMapping("/detallePaciente/{codigo}")
+    public ResponseEntity<MensajeDTO<DetallePacienteDTO>> VerDetallePaciente(@PathVariable int codigo) throws Exception {
+        return ResponseEntity.ok().body( new MensajeDTO<>(false, pacienteServicio.detallePaciente(codigo)));
+    }
+
     @DeleteMapping("/eliminarPerfil/{codigoCuenta}")
     public ResponseEntity<MensajeDTO<String>> eliminarPerfil(@PathVariable int codigoCuenta) throws Exception{
         pacienteServicio.eliminarCuenta(codigoCuenta);

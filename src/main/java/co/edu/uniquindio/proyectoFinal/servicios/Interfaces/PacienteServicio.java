@@ -14,6 +14,8 @@ public interface PacienteServicio {
 
     int editarPerfil(DetallePacienteDTO paciente)throws Exception;
 
+    DetallePacienteDTO detallePaciente(int codigo)throws Exception;
+
     void eliminarCuenta(int codigoCuenta)throws Exception;
 
     String enviarLinkRecuperacion(EnviarCorreoPacienteDTO correoPacienteDTO)throws Exception;
@@ -37,8 +39,6 @@ public interface PacienteServicio {
     DetalleCitaPacienteDTO verDetalleCita(int codigoCita)throws Exception;
 
     void posponerCita(int codigoCita, LocalDate fecha, LocalTime hora) throws Exception;
-
-    DetallePacienteDTO detallePaciente(int codigo)throws Exception;
-
     List<MedicoEspecialidadDTO> obtenerMedicosEspecialidad(Especialidad especialidad) throws Exception;
+
 }

@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PQRSRepository extends JpaRepository<PQRS, Integer> {
     //PQRS findByCodigoCita(int codigoCita);
+   // PQRS findByCodigoCita(int codigoCita);
 }
